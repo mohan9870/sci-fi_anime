@@ -1,0 +1,171 @@
+.parent-plan-page {
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+  // background-color: #f2f2f2; /* Light background color */
+}
+
+.parent-plan-title {
+  font-size: 2.2rem; /* Slightly larger title */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333; /* Darker title color */
+}
+
+.parent-plan-subtitle {
+  font-size: 1.1rem; /* Slightly larger subtitle for better readability */
+  color: #231c1c;
+  margin-bottom: 2rem;
+}
+
+.parent-plan-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem; /* Add spacing below the cards */
+}
+
+.parent-plan-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth card hover effect */
+}
+
+.parent-plan-card:hover {
+  transform: translateY(-5px); /* Slight elevation on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+.parent-plan-name {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #333; /* Darker text color */
+}
+
+.parent-plan-price {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.parent-plan-description {
+  margin-bottom: 1rem;
+  color: #666;
+  margin-right: 25px;
+}
+
+.parent-plan-features {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  color: #444; /* Slightly darker text for better contrast */
+}
+
+.parent-plan-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.parent-plan-upgrade-btn,
+.parent-plan-cancel-btn {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 120px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.parent-plan-upgrade-btn {
+  background: linear-gradient(135deg, #ff4081, #7c4dff);
+  color: white;
+}
+
+.parent-plan-upgrade-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slight button grow effect on hover */
+}
+
+.parent-plan-upgrade-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.parent-plan-cancel-btn {
+  background: linear-gradient(135deg, #ff4081, #7c4dff);
+  color: white;
+}
+
+.parent-plan-cancel-btn:hover {
+  background-color: #c4c4c4;
+  transform: scale(1.05); /* Slight button grow effect on hover */
+}
+
+.parent-plan-cancel-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .parent-plan-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .parent-plan-card {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .parent-plan-title {
+    font-size: 1.8rem;
+  }
+
+  .parent-plan-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .parent-plan-name {
+    font-size: 1.3rem;
+  }
+
+  .parent-plan-price {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .parent-plan-card {
+    max-width: 95%;
+    padding: 1.2rem;
+  }
+
+  .parent-plan-title {
+    font-size: 1.6rem;
+  }
+
+  .parent-plan-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .parent-plan-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .parent-plan-upgrade-btn,
+  .parent-plan-cancel-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+}

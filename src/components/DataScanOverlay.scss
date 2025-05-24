@@ -1,0 +1,93 @@
+.data-scan-overlay {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  background: rgba(0, 0, 0, 0.85);
+  color: #0ff;
+  border: 1px solid #0ff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 350px;
+  font-family: 'Orbitron', sans-serif;
+  z-index: 999;
+
+  .scan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #0ff;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+
+    h2 {
+      font-size: 18px;
+      color: #0ff;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #0ff;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #f0f;
+      }
+    }
+  }
+
+  .metadata-section {
+    font-size: 13px;
+    margin-bottom: 15px;
+
+    div {
+      margin-bottom: 5px;
+    }
+  }
+
+  .commentary-section {
+    margin-bottom: 15px;
+
+    h4 {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #ff0;
+    }
+
+    .highlight {
+      color: #fff;
+      font-style: italic;
+    }
+
+    .faded {
+      color: #666;
+      font-size: 12px;
+    }
+  }
+
+  .trivia-section {
+    h4 {
+      font-size: 14px;
+      color: #0f0;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        font-size: 12px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: start;
+
+        span {
+          color: #0ff;
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+}

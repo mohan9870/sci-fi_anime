@@ -1,0 +1,143 @@
+
+.latest-releases-container {
+  padding: 20px;
+  // This will now handle the layout of its direct children (header and sections)
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // Ensure it takes full viewport height
+  background-color: #0a0a0a; // Consistent dark background
+  color: #fff;
+}
+
+.latest-releases-header {
+  display: flex;
+  align-items: center;
+  /* Adjust justify-content to position elements as desired.
+     For left-aligned button and then heading, flex-start is typical.
+     If you want the heading centered and button to the left/right,
+     you might need more complex flex layouts or absolute positioning. */
+  justify-content: space-between; /* Changed to space-between to push button to one end and heading to the other */
+  gap: 20px; /* Space between button and heading */
+  margin-bottom: 20px; /* Space below the header */
+  padding: 0 1rem; /* Some horizontal padding for the header content */
+
+  .section-heading {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 0; /* Remove default margin as it's now in a flex container */
+    flex-grow: 1; /* Allow heading to take available space */
+    text-align: center; /* Center the text within its flex space */
+  }
+}
+
+.back-button {
+  background: transparent !important; /* Force transparent background */
+  border: none !important; /* Force no border */
+  outline: none !important; /* Force no outline on focus */
+  box-shadow: none !important; /* Force no box shadow */
+  text-shadow: none !important; /* Force no text shadow */
+  color: #00f9ff !important; /* Neon blue color for the arrow */
+  padding: 0 !important; /* Force no padding */
+  margin-top: 90px; /* Force no margin */
+  border-radius: 0 !important; /* Force no rounded corners */
+  font-size: 1.8rem !important; /* Size of the arrow */
+  font-weight: normal !important; /* Ensure no bolding */
+  display: flex !important; /* Use flexbox to center the content (arrow) */
+  align-items: center !important; /* Center vertically */
+  justify-content: center !important; /* Center horizontally */
+  line-height: 1 !important; /* Ensure line height doesn't add extra space */
+  cursor: pointer !important; /* Ensure cursor is a pointer */
+  -webkit-appearance: none !important; /* Remove default button styles for Webkit browsers */
+  -moz-appearance: none !important; /* Remove default button styles for Mozilla browsers */
+  appearance: none !important; /* Remove default button styles */
+  flex-shrink: 0; /* Prevent button from shrinking */
+
+  &:hover {
+    color: #00e0e6 !important; /* Slight color change on hover */
+  }
+}
+
+.latest-releases-section {
+  margin-bottom: 40px;
+}
+
+/* The .section-heading rules specific to the original component's structure
+   are now primarily handled by the .latest-releases-header's .section-heading */
+
+.latest-releases-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.latest-release-card {
+  background: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.release-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.release-title {
+  color: #eee;
+  padding: 10px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .latest-releases-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .latest-releases-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0 1rem;
+  }
+  .latest-releases-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .release-img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .latest-releases-container {
+    padding: 10px;
+  }
+  .latest-releases-header {
+    .section-heading {
+      font-size: 1.5rem;
+    }
+  }
+  .back-button {
+    font-size: 1.5rem !important;
+  }
+  .latest-releases-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
+  .release-img {
+    height: 150px;
+  }
+  .release-title {
+    font-size: 0.9rem;
+  }
+}

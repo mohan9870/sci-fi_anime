@@ -1,0 +1,158 @@
+.series-page-container {
+  background-color: #0a0a0a; // Dark background
+  color: #fff;
+  min-height: 100vh;
+  padding: 1rem; /* Decreased padding */
+}
+
+.series-page-header {
+  display: flex;
+  align-items: center;
+  /* Changed to space-between to push items to opposite ends */
+  justify-content: space-between;
+  margin-bottom: 1rem; /* Decreased margin-bottom */
+  padding: 0 1rem; /* Add some horizontal padding to the header itself */
+
+  h1 {
+    font-size: 2.5rem;
+    color: #00f9ff; // Neon blue color
+    text-shadow: 0 0 10px #00f9ff;
+    font-family: 'Orbitron', sans-serif;
+    /* To center the h1 while button is on the right, you might need to adjust this
+       or use a more complex layout if the button is not part of the main flow.
+       For now, it will be between the button and the left edge. */
+    flex-grow: 1; /* Allow h1 to take available space */
+    text-align: center; /* Center the text within its flex space */
+  }
+}
+
+.back-button {
+  background: transparent !important; /* Force transparent background */
+  border: none !important; /* Force no border */
+  outline: none !important; /* Force no outline on focus */
+  box-shadow: none !important; /* Force no box shadow */
+  text-shadow: none !important; /* Force no text shadow */
+  color: #00f9ff !important; /* Explicitly set color for the icon to be visible */
+  padding: 0 !important; /* Force no padding */
+  margin-top: 90px; /* Remove all margins to let flexbox handle positioning */
+  border-radius: 0 !important; /* Force no rounded corners */
+  font-size: 1.8rem !important; /* Increased font-size for better visibility of the icon */
+  font-weight: normal !important; /* Ensure no bolding */
+  display: flex !important; /* Use flexbox to center the icon */
+  align-items: center !important; /* Center vertically */
+  justify-content: center !important; /* Center horizontally */
+  line-height: 1 !important; /* Ensure line height doesn't add extra space */
+  cursor: pointer !important; /* Ensure cursor is a pointer */
+  -webkit-appearance: none !important; /* Remove default button styles for Webkit browsers */
+  -moz-appearance: none !important; /* Remove default button styles for Mozilla browsers */
+  appearance: none !important; /* Remove default button styles */
+  flex-shrink: 0; /* Prevent button from shrinking */
+
+  &:hover {
+    color: #00e0e6 !important; /* Slightly change color on hover for feedback */
+  }
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Changed to explicitly show 4 columns */
+  gap: 1rem; /* Decreased gap */
+  justify-items: center; // Center cards in their grid cells
+}
+
+.series-card {
+  background-color: rgba(25, 25, 25, 0.8);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 249, 255, 0.2); /* Updated shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Updated transition duration */
+  width: 100%; // Make card take full width of its grid cell
+  max-width: 400px; // Adjusted max width to match top-movie-card
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 249, 255, 0.4); /* Updated hover shadow */
+  }
+
+  &-img {
+    width: 100%;
+    height: 280px; /* Updated height to match movie-img */
+    object-fit: cover; // Cover the area without distorting aspect ratio
+    border-bottom: 1px solid #00f9ff;
+    transition: transform 0.3s; /* Added transition for hover scale */
+
+    &:hover {
+      transform: scale(1.05); /* Added hover scale effect */
+    }
+  }
+
+  &-title {
+    padding: 0.5rem 0.3rem; /* Decreased padding */
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    white-space: nowrap; /* Added for truncation */
+    overflow: hidden; /* Added for truncation */
+    text-overflow: ellipsis; /* Added for truncation */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) { /* Added a breakpoint for 3 columns on larger tablets/small laptops */
+  .series-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem; /* Decreased gap */
+  }
+  .series-card {
+    max-width: 220px; /* Adjust max-width for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .series-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem; /* Decreased gap */
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .series-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    gap: 0.8rem; /* Decreased gap */
+  }
+
+  .series-card-img {
+    height: 220px; /* Adjusted height for tablets */
+  }
+  .series-card {
+    max-width: 180px; /* Adjust max-width for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .series-page-header {
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+
+  .series-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 column for mobile */
+    gap: 0.5rem; /* Decreased gap */
+  }
+
+  .series-card-img {
+    height: 200px; /* Adjusted height for mobile */
+  }
+
+  .series-card-title {
+    font-size: 0.95rem;
+  }
+  .series-card {
+    max-width: 100%; /* Allow full width on smallest screens */
+  }
+}

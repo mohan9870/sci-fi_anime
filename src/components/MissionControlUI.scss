@@ -1,0 +1,538 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap');
+
+// Define Futuristic Color Palette
+$dark-bg: #0a0a0a;
+$neon-cyan: #00ffff;
+$neon-magenta: #ff00ff;
+$neon-purple: #8a2be2;
+$neon-green: #00ff00;
+$text-light: #e0ffe0; // Lighter green for general text
+$border-glow: rgba(0, 255, 255, 0.4); // Cyan glow for panels
+
+// Keyframe Animations
+@keyframes glitch {
+  0% { text-shadow: 0.05em 0 0 $neon-cyan, -0.03em -0.02em 0 $neon-magenta; }
+  10% { text-shadow: -0.05em -0.02em 0 $neon-magenta, 0.03em 0.02em 0 $neon-cyan; }
+  20% { text-shadow: 0.02em 0.03em 0 $neon-cyan, -0.01em -0.01em 0 $neon-magenta; }
+  30% { text-shadow: -0.04em 0 0 $neon-magenta, 0.02em -0.03em 0 $neon-cyan; }
+  40% { text-shadow: 0.03em -0.01em 0 $neon-cyan, -0.02em 0.04em 0 $neon-magenta; }
+  50% { text-shadow: -0.01em 0.02em 0 $neon-magenta, 0.04em -0.02em 0 $neon-cyan; }
+  60% { text-shadow: 0.05em 0 0 $neon-cyan, -0.03em -0.02em 0 $neon-magenta; }
+  70% { text-shadow: -0.05em -0.02em 0 $neon-magenta, 0.03em 0.02em 0 $neon-cyan; }
+  80% { text-shadow: 0.02em 0.03em 0 $neon-cyan, -0.01em -0.01em 0 $neon-magenta; }
+  90% { text-shadow: -0.04em 0 0 $neon-magenta, 0.02em -0.03em 0 $neon-cyan; }
+  100% { text-shadow: 0.03em -0.01em 0 $neon-cyan, -0.02em 0.04em 0 $neon-magenta; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 5px $neon-cyan, 0 0 15px rgba(0, 255, 255, 0.4); }
+  50% { box-shadow: 0 0 10px $neon-cyan, 0 0 25px rgba(0, 255, 255, 0.7); }
+}
+
+@keyframes lightTrailMove {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes backgroundGridFlow {
+  from { background-position: 0 0; }
+  to { background-position: 100% 100%; }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes scanline {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+// Global Styles
+body {
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace;
+  background-color: $dark-bg;
+  color: $text-light;
+  overflow-x: hidden; // Prevent horizontal scroll
+}
+
+.mission-control-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden; // Ensure background overlay doesn't cause scroll
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    // Subtle starscape/neural grid pattern
+    radial-gradient(circle at top left, rgba(0, 255, 255, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255, 0, 255, 0.05) 0%, transparent 30%),
+    linear-gradient(to right, rgba(0, 255, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 0, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px; // Size of the grid cells
+  animation: backgroundGridFlow 120s linear infinite;
+  z-index: -1; // Keep it behind everything
+  opacity: 0.7;
+}
+
+.main-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4em;
+  color: $neon-cyan;
+  text-shadow: 0 0 15px $neon-cyan, 0 0 30px rgba(0, 255, 255, 0.7);
+  margin-bottom: 50px;
+  position: relative;
+  user-select: none;
+
+  .glitch {
+    animation: glitch 1.5s infinite alternate;
+    position: relative;
+    &::before, &::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    &::before {
+      left: 2px;
+      text-shadow: -2px 0 $neon-magenta;
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch 1.5s infinite alternate-reverse;
+    }
+    &::after {
+      left: -2px;
+      text-shadow: -2px 0 $neon-cyan;
+      clip: rect(85px, 450px, 100px, 0);
+      animation: glitch 1.5s infinite alternate;
+    }
+  }
+}
+
+.hologram-panel {
+  background: rgba(10, 20, 30, 0.7); // Darker, semi-transparent background
+  border: 1px solid $neon-cyan;
+  border-image: linear-gradient(45deg, $neon-cyan, $neon-magenta, $neon-purple, $neon-green) 1;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 0 20px $border-glow, inset 0 0 10px $border-glow;
+  backdrop-filter: blur(8px); // Stronger blur for hologram effect
+  animation: flicker 2s infinite alternate; // Subtle flicker
+  position: relative;
+  overflow: hidden; // For scanline effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      transparent 0%,
+      rgba(0, 255, 255, 0.05) 1px,
+      transparent 2px,
+      transparent 4px
+    );
+    background-size: 100% 10px;
+    animation: scanline 10s linear infinite;
+    opacity: 0.5;
+    pointer-events: none; // Allow clicks to pass through
+  }
+}
+
+.mission-dashboard-panel {
+  width: 90%;
+  max-width: 1000px;
+  margin-bottom: 50px;
+
+  h2 {
+    font-size: 2.5em;
+    color: $neon-purple;
+    text-shadow: 0 0 10px $neon-purple;
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+
+    .dashboard-item {
+      background: rgba(20, 40, 60, 0.6);
+      border: 1px solid $neon-cyan;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 15px $neon-cyan, 0 0 25px rgba(0, 255, 255, 0.5);
+      }
+
+      &.completed {
+        border-color: $neon-green;
+        box-shadow: 0 0 10px $neon-green, 0 0 20px rgba(0, 255, 0, 0.4);
+        .progress-bar { background-color: $neon-green; }
+        .status-badge { background-color: $neon-green; }
+      }
+
+      .mission-title {
+        font-size: 1.2em;
+        color: $neon-cyan;
+        margin-bottom: 10px;
+        display: block;
+        text-shadow: 0 0 5px $neon-cyan;
+      }
+
+      .progress-bar-container {
+        width: 100%;
+        height: 8px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        margin-top: 10px;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background-color: $neon-cyan;
+        border-radius: 4px;
+        transition: width 0.5s ease-out;
+        box-shadow: 0 0 5px $neon-cyan;
+      }
+
+      .progress-text {
+        font-size: 0.9em;
+        color: $text-light;
+        margin-top: 10px;
+        display: block;
+      }
+
+      .status-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: $text-light;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 0.8em;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.mission-selection-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 60px;
+  width: 90%;
+}
+
+.mission-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 180px;
+  height: 180px;
+  background: rgba(10, 20, 30, 0.6);
+  border: 2px solid $neon-cyan;
+  border-radius: 50%; // Circular nodes
+  box-shadow: 0 0 10px $neon-cyan, 0 0 20px rgba(0, 255, 255, 0.4);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden; // For light trail
+
+  &:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px $neon-cyan, 0 0 30px rgba(0, 255, 255, 0.6);
+    .light-trail {
+      animation: lightTrailMove 1s ease-out forwards;
+    }
+  }
+
+  &.active {
+    border-color: $neon-green;
+    box-shadow: 0 0 20px $neon-green, 0 0 40px rgba(0, 255, 0, 0.7);
+    transform: scale(1.1);
+  }
+
+  &.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+    .node-icon { background-color: rgba(255, 0, 0, 0.6); }
+    .node-title, .tag { color: rgba(255, 255, 255, 0.5); }
+    &:hover {
+      transform: none; // No scale on hover for locked
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+    }
+  }
+
+  .node-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $neon-cyan;
+    border: 3px solid rgba($neon-cyan, 0.7);
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    animation: pulseGlow 2s infinite alternate;
+  }
+
+  .node-title {
+    font-size: 1.1em;
+    text-align: center;
+    color: $text-light;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .tag {
+    font-size: 0.75em;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-top: 8px;
+    background-color: rgba(0, 255, 0, 0.15);
+    color: $neon-green;
+    border: 1px solid $neon-green;
+    text-shadow: 0 0 2px $neon-green;
+  }
+
+  .lock-icon {
+    position: absolute;
+    font-size: 2em;
+    color: rgba(255, 0, 0, 0.8);
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .light-trail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 255, 255, 0.5) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+  }
+
+  // Type-specific styling for node icons
+  &.expedition .node-icon { background-color: $neon-cyan; border-color: rgba($neon-cyan, 0.7); }
+  &.mission .node-icon { background-color: $neon-magenta; border-color: rgba($neon-magenta, 0.7); }
+  &.recon .node-icon { background-color: $neon-purple; border-color: rgba($neon-purple, 0.7); }
+
+  // Tag-specific styling for critical missions
+  &.tag-temporal-anomaly {
+    border-color: $neon-green;
+    box-shadow: 0 0 10px $neon-green, 0 0 20px rgba(0, 255, 0, 0.5);
+    .node-icon {
+      background-color: $neon-green;
+      border-color: rgba($neon-green, 0.8);
+      animation: pulseGlow 1.5s infinite alternate;
+    }
+  }
+  &.tag-system-breach {
+    border-color: #ff3333; // Red for breach
+    box-shadow: 0 0 10px #ff3333, 0 0 20px rgba(255, 51, 51, 0.6);
+    .node-icon {
+      background-color: #ff3333;
+      border-color: rgba(255, 51, 51, 0.8);
+      animation: pulseGlow 0.8s infinite alternate; // Faster pulse
+    }
+  }
+  &.tag-galactic-event {
+    border-color: $neon-purple;
+    box-shadow: 0 0 10px $neon-purple, 0 0 20px rgba(138, 43, 226, 0.6);
+    .node-icon {
+      background-color: $neon-purple;
+      border-color: rgba($neon-purple, 0.8);
+      animation: pulseGlow 2.5s infinite alternate;
+    }
+  }
+  &.tag-time-alteration {
+    border-color: $neon-magenta;
+    box-shadow: 0 0 10px $neon-magenta, 0 0 20px rgba(255, 0, 255, 0.6);
+    .node-icon {
+      background-color: $neon-magenta;
+      border-color: rgba($neon-magenta, 0.8);
+      animation: pulseGlow 1.2s infinite alternate;
+    }
+  }
+}
+
+.mission-detail-panel {
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+  min-height: 250px; /* Added for visibility of select message */
+
+  .detail-title {
+    font-size: 2.2em;
+    color: $neon-cyan;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px $neon-cyan;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .detail-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: $text-light;
+  }
+
+  .upgrades-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+
+    li {
+      background-color: rgba(0, 255, 0, 0.1);
+      border: 1px solid $neon-green;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: $neon-green;
+      font-size: 0.95em;
+      text-shadow: 0 0 3px $neon-green;
+      transition: transform 0.2s ease-in-out;
+      &:hover {
+        transform: translateY(-3px);
+        background-color: rgba(0, 255, 0, 0.25);
+      }
+    }
+  }
+
+  .mission-video {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 12px;
+    border: 3px solid $neon-magenta;
+    box-shadow: 0 0 20px $neon-magenta, 0 0 30px rgba(255, 0, 255, 0.5);
+    transition: transform 0.3s ease-in-out;
+    &:hover {
+      transform: scale(1.005);
+    }
+  }
+
+  .action-button {
+    background: linear-gradient(45deg, $neon-cyan, $neon-green);
+    color: $dark-bg;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 30px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(45deg, $neon-green, $neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+      transform: translateY(-3px);
+    }
+
+    &:disabled {
+      background: #333;
+      color: #777;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  .select-message {
+    font-size: 1.5em;
+    color: $neon-purple;
+    text-shadow: 0 0 5px $neon-purple;
+    padding: 50px 0;
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5em;
+  }
+
+  .mission-dashboard-panel,
+  .mission-detail-panel {
+    padding: 20px;
+  }
+
+  .mission-selection-grid {
+    gap: 20px;
+  }
+
+  .mission-node {
+    width: 150px;
+    height: 150px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr; // Stack items on small screens
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2em;
+  }
+
+  .mission-node {
+    width: 120px;
+    height: 120px;
+    .node-icon {
+      width: 30px;
+      height: 30px;
+    }
+    .node-title {
+      font-size: 0.9em;
+    }
+    .tag {
+      font-size: 0.65em;
+    }
+  }
+
+  .action-button {
+    padding: 12px 20px;
+    font-size: 1em;
+  }
+}

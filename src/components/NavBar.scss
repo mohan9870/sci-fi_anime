@@ -1,0 +1,242 @@
+.navbar-main {
+  background-color: #0a0a0a; // Dark background
+  padding: 1rem 2rem;
+  box-shadow: 0 0 15px rgba(0, 249, 255, 0.4); // Neon glow for the navbar itself
+  position: sticky;
+  top: 0;
+  z-index: 1000; // Ensure it stays on top
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; // Or your preferred max width
+  margin: 0 auto;
+}
+
+.nav_logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #00f9ff; // Neon blue for logo
+  cursor: pointer;
+  text-shadow: 0 0 10px #00f9ff;
+  transition: text-shadow 0.3s ease;
+
+  &:hover {
+    text-shadow: 0 0 20px #00f9ff, 0 0 30px #00f9ff; // More intense glow on hover
+  }
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem; // Increased gap for spacing
+}
+
+.nav-item {
+  a {
+    color: #ccc; // Default link color
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease; // Smooth transition for hover and active states
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif; // Or your preferred text font
+
+    &:hover {
+      color: #fff;
+      background-color: rgba(0, 249, 255, 0.15); // Subtle neon background on hover
+      text-shadow: 0 0 8px #00f9ff; // Subtle text glow on hover
+    }
+  }
+
+  // --- Active Link Highlighting ---
+  &.active a {
+    color: #00f9ff !important; // Bright neon blue text
+    background-color: rgba(0, 249, 255, 0.1) !important; // Slightly darker background
+    border-bottom: 3px solid #00f9ff !important; // A strong neon underline
+    font-weight: bold !important;
+    text-shadow: 0 0 12px #00f9ff !important; // Prominent text glow
+    transform: translateY(-2px) !important; // Slight lift
+  }
+}
+
+.nav-search {
+  input {
+    background-color: #1c1c1c;
+    border: 1px solid #00f9ff; // Neon border
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    color: #00f9ff; // Neon text color
+    font-family: 'Open Sans', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: #00e0e6; // Lighter neon for placeholder
+    }
+
+    &:focus {
+      box-shadow: 0 0 10px #00f9ff; // Glow on focus
+      border-color: #00e0e6;
+    }
+  }
+}
+
+.nav-icons {
+  display: flex;
+  gap: 1.5rem; // Space between icons
+
+  .nav-icon {
+    font-size: 1.5rem;
+    color: #ccc; // Default icon color
+    cursor: pointer;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+
+    &:hover {
+      color: #00f9ff; // Neon blue on hover
+      text-shadow: 0 0 10px #00f9ff; // Neon glow on hover
+    }
+
+    // --- Active Icon Highlighting ---
+    &.active {
+      color: #00f9ff !important; // Bright neon blue when active
+      text-shadow: 0 0 15px #00f9ff !important; // More intense glow when active
+      transform: scale(1.1) !important; // Slightly larger
+    }
+  }
+
+  .sign-out-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex; // To align icon correctly
+    align-items: center;
+  }
+}
+
+.mobile-menu-btn {
+  display: none; // Hidden on desktop
+  font-size: 1.8rem;
+  color: #00f9ff; // Neon color for the mobile menu icon
+  cursor: pointer;
+}
+
+.mobile-menu-modal {
+  // Styles for the fullscreen modal background
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); // Dark overlay
+  z-index: 1001; // Above navbar
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-menu-content {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 249, 255, 0.6); // Stronger glow for modal
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+
+  .mobile-nav-item {
+    margin-bottom: 1.5rem;
+
+    a {
+      color: #eee;
+      text-decoration: none;
+      font-size: 1.5rem;
+      padding: 0.8rem;
+      display: block;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: #00f9ff;
+        background-color: rgba(0, 249, 255, 0.1);
+        text-shadow: 0 0 10px #00f9ff;
+      }
+    }
+
+    // --- Active Mobile Link Highlighting ---
+    &.active a {
+      color: #00f9ff !important;
+      background-color: rgba(0, 249, 255, 0.2) !important;
+      border-left: 5px solid #00f9ff !important; // A strong left border
+      font-weight: bold !important;
+      text-shadow: 0 0 15px #00f9ff !important;
+    }
+  }
+}
+
+.mobile-menu-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+
+  .mobile-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+
+    .mobile-nav-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    &:hover {
+      color: #00f9ff;
+      text-shadow: 0 0 8px #00f9ff;
+    }
+
+    // --- Active Mobile Icon Highlighting ---
+    &.active {
+      color: #00f9ff !important;
+      text-shadow: 0 0 12px #00f9ff !important;
+      transform: scale(1.1) !important;
+    }
+  }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .nav-list.desktop,
+  .nav-search,
+  .nav-icons {
+    display: none; // Hide desktop elements on mobile
+  }
+
+  .mobile-menu-btn {
+    display: block; // Show mobile menu button
+  }
+
+  .navbar-main {
+    padding: 0.8rem 1rem;
+  }
+
+  .nav_logo {
+    font-size: 1.5rem;
+  }
+}

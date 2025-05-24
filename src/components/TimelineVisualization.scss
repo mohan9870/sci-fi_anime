@@ -1,0 +1,355 @@
+// Import a techy font if you have one, or use a system equivalent
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+$primary-color: #00ff00; // Neon Green
+$secondary-color: #00aaff; // Cyber Blue
+$tertiary-color: #ff00ff; // Magenta
+$accent-color: #ffaa00; // Orange
+
+@keyframes dataStreamPulse {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes nodeGlow {
+  0%, 100% { box-shadow: 0 0 3px $primary-color, 0 0 8px rgba(0, 255, 0, 0.3); } /* Reduced */
+  50% { box-shadow: 0 0 6px $primary-color, 0 0 15px rgba(0, 255, 0, 0.5); } /* Reduced */
+}
+
+@keyframes spikeAnimation {
+  0% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(1.5); opacity: 0.7; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background: #0a0a0a; // Very dark background
+  color: $primary-color;
+  font-family: 'Share Tech Mono', monospace;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden; // Prevent horizontal scroll from overflow
+}
+
+.timeline-title {
+  font-size: 3em;
+  margin-bottom: 60px;
+  text-shadow: 0 0 10px $primary-color, 0 0 20px rgba(0, 255, 0, 0.6); /* Reduced */
+  letter-spacing: 3px;
+  text-align: center;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, $primary-color, transparent);
+    margin: 15px auto 0;
+    box-shadow: 0 0 8px $primary-color; /* Reduced */
+  }
+}
+
+.timeline-genetic-strand-wrapper {
+  position: relative;
+  width: 95%; // Make it wider to resemble a strand
+  margin-bottom: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px; // Provide vertical space for nodes to sit above/below
+  padding: 0 20px; // Padding to ensure nodes don't touch edges
+}
+
+.episode-nodes-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 2;
+  position: relative;
+  top: 0;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+.timeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 5px;
+  border-radius: 12px; // More rounded for organic feel
+  transition: all 0.4s ease-in-out;
+  position: relative;
+  flex-shrink: 0;
+  width: 140px; // Wider for more content
+  margin: 0 10px; // Spacing between nodes
+
+  // Positioning nodes above and below the central strand
+  &:nth-child(even) { // Even nodes below
+    transform: translateY(20px) rotateX(5deg);
+  }
+  &:nth-child(odd) { // Odd nodes above
+    transform: translateY(-20px) rotateX(-5deg);
+  }
+
+  .node-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: $primary-color;
+    border: 3px solid rgba($primary-color, 0.7);
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 3;
+    animation: nodeGlow 2s infinite alternate; // Subtle glow
+  }
+
+  .node-title {
+    font-size: 1em;
+    text-align: center;
+    margin-top: 5px;
+    color: #e0ffe0; // Lighter green for text
+    text-shadow: 0 0 3px rgba(0, 255, 0, 0.4); /* Reduced */
+  }
+
+  .tag {
+    font-size: 0.75em;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-top: 8px;
+    background-color: rgba(0, 200, 0, 0.15);
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    text-shadow: 0 0 2px $primary-color; /* Reduced */
+  }
+
+  // Type-specific styling (Memory Nodes, Upgrades, Key Moments)
+  &.memory {
+    .node-icon { background-color: $secondary-color; border-color: rgba($secondary-color, 0.7); animation: nodeGlow 2.5s infinite alternate; }
+    background-color: rgba($secondary-color, 0.08);
+    border: 1px solid rgba($secondary-color, 0.5);
+  }
+  &.upgrade {
+    .node-icon { background-color: $accent-color; border-color: rgba($accent-color, 0.7); animation: nodeGlow 2s infinite alternate; }
+    background-color: rgba($accent-color, 0.08);
+    border: 1px solid rgba($accent-color, 0.5);
+  }
+  &.moment {
+    .node-icon { background-color: $tertiary-color; border-color: rgba($tertiary-color, 0.7); animation: nodeGlow 3s infinite alternate; }
+    background-color: rgba($tertiary-color, 0.08);
+    border: 1px solid rgba($tertiary-color, 0.5);
+    // Temporal Spike / Galactic Event visual for "moment" type
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -30px; // Position below the node
+      width: 2px;
+      height: 20px;
+      background: $tertiary-color;
+      box-shadow: 0 0 8px $tertiary-color, 0 0 15px rgba($tertiary-color, 0.6); /* Reduced */
+      animation: spikeAnimation 1.5s infinite alternate;
+      transform-origin: bottom;
+    }
+  }
+
+  // Tag-specific styling for critical episodes
+  &.tag-temporal-shift {
+    border-color: #ff4500; // Orange-red for instability
+    box-shadow: 0 0 10px rgba(#ff4500, 0.4); /* Reduced */
+    .node-icon {
+      background-color: #ff4500;
+      border-color: #ff6347;
+      animation: nodeGlow 1s infinite alternate; // Faster glow for critical
+      &::after { // "Glitch" effect
+        content: '';
+        position: absolute;
+        top: 2px; left: -2px;
+        width: 100%; height: 100%;
+        background: rgba(0, 255, 255, 0.5);
+        clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+        animation: glitchEffect 0.3s infinite alternate;
+      }
+    }
+  }
+
+  &.tag-system-breach {
+    border-color: #ff0000; // Red for breach
+    box-shadow: 0 0 10px rgba(#ff0000, 0.5); /* Reduced */
+    .node-icon {
+      background-color: #ff0000;
+      border-color: #ff3333;
+      animation: nodeGlow 0.8s infinite alternate; // Even faster glow
+      &::after { // "Spark" effect
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 4px; height: 4px;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #fff; /* Reduced */
+        animation: sparkBurst 0.5s infinite alternate;
+      }
+    }
+  }
+
+  &.tag-galactic-event {
+    border-color: #8a2be2; // Blue Violet for cosmic
+    box-shadow: 0 0 10px rgba(#8a2be2, 0.5); /* Reduced */
+    .node-icon {
+      background-color: #8a2be2;
+      border-color: #9370db;
+      animation: nodeGlow 2.5s infinite alternate;
+      &::after { // "Galaxy" swirl
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+        border-radius: 50%;
+        animation: rotateSwirl 10s linear infinite;
+      }
+    }
+  }
+
+  &.tag-time-alteration {
+    border-color: #ffff00; // Yellow for time effects
+    box-shadow: 0 0 10px rgba(#ffff00, 0.5); /* Reduced */
+    .node-icon {
+      background-color: #ffff00;
+      border-color: #fafa00;
+      animation: nodeGlow 1.2s infinite alternate;
+      &::after { // "Warp" effect
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: radial-gradient(circle at center, rgba(255,255,0,0.5) 0%, transparent 60%);
+        border-radius: 50%;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        animation: warpEffect 0.8s infinite alternate;
+      }
+    }
+  }
+
+  &:hover {
+    transform: scale(1.1) rotateX(0deg); // Bring to front and flatten slightly
+    background-color: rgba($primary-color, 0.1); /* Slightly less opaque */
+    box-shadow: 0 0 15px rgba($primary-color, 0.5); /* Reduced */
+    z-index: 4; // Ensure hover is on top
+  }
+
+  &.active {
+    background-color: rgba($primary-color, 0.2); /* Slightly less opaque */
+    border: 2px solid $primary-color;
+    box-shadow: 0 0 20px $primary-color, 0 0 30px rgba(0, 255, 0, 0.7); /* Reduced */
+    transform: scale(1.15) rotateX(0deg); // Slightly larger and flat when active
+    z-index: 5;
+    .node-icon {
+      border-color: #fff;
+      box-shadow: 0 0 15px #fff; /* Reduced */
+      animation: none; // Stop glowing animation when active
+      background-color: #fff;
+    }
+  }
+}
+
+.video-panel {
+  margin-top: 60px;
+  background: linear-gradient(45deg, rgba(0, 20, 0, 0.5), rgba(0, 50, 0, 0.7)); /* Slightly less opaque */
+  border: 2px solid $primary-color;
+  border-radius: 15px;
+  padding: 40px;
+  width: 80%;
+  max-width: 900px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.6); /* Reduced */
+  backdrop-filter: blur(5px); // Frosted glass effect
+  animation: panelAppear 0.5s ease-out;
+
+  h3 {
+    font-size: 2.2em;
+    color: $secondary-color;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px $secondary-color; /* Reduced */
+    letter-spacing: 1px;
+  }
+
+  p.desc {
+    font-size: 1.2em;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #ccffcc;
+    text-shadow: 0 0 1px rgba(0, 255, 0, 0.2); /* Reduced */
+  }
+
+  .upgrades {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+
+    li {
+      background-color: rgba($accent-color, 0.15);
+      border: 1px solid $accent-color;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: $accent-color;
+      font-size: 1em;
+      text-shadow: 0 0 3px $accent-color; /* Reduced */
+      transition: transform 0.2s ease-in-out;
+      &:hover {
+        transform: translateY(-3px);
+        background-color: rgba($accent-color, 0.3);
+      }
+    }
+  }
+
+  video {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 12px;
+    border: 3px solid $primary-color;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7), 0 0 25px rgba(0, 255, 0, 0.4); /* Reduced */
+    transition: transform 0.3s ease-in-out;
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+}
+
+@keyframes glitchEffect {
+  0% { transform: translate(0, 0); clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%); }
+  25% { transform: translate(-2px, 1px); clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); }
+  50% { transform: translate(2px, -1px); clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%); }
+  75% { transform: translate(-1px, 2px); clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%); }
+  100% { transform: translate(0, 0); clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%); }
+}
+
+@keyframes sparkBurst {
+  0% { transform: scale(0); opacity: 1; }
+  50% { transform: scale(2); opacity: 0.5; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+@keyframes rotateSwirl {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes warpEffect {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1) rotate(5deg); }
+  100% { transform: scale(1); }
+}
+
+@keyframes panelAppear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

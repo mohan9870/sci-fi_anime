@@ -1,0 +1,19 @@
+// _variables.scss
+
+// Color Palette
+$bg-dark: #1a1a1a;          // Dark background color
+$neon-blue: #00d4ff;        // Neon blue for UI elements
+$neon-purple: #9b59b6;      // Neon purple for UI elements
+$neon-green: #00ff99;       // Neon green for UI elements
+$text-light: #ffffff;       // Light text color
+$text-dark: #333;           // Dark text color
+$highlight-text: #ff00ff;   // Bright color for highlighted text (like email)
+
+// Font Family
+$font-sci-fi: 'Orbitron', sans-serif;  // A futuristic font (make sure to import)
+
+// Border Radius
+$border-radius: 12px;      // Rounded borders for inputs and buttons
+
+// Box Shadow
+$neon-glow: 0 0 8px 2px #00d4ff;  // Neon glow effect for boxes

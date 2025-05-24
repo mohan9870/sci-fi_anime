@@ -1,0 +1,28 @@
+.ai-voice-toggle-button {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    background: linear-gradient(45deg, #007bff, #00e5ff); /* Cyan gradient */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    box-shadow: var(--glow-strength) var(--neon-cyan); /* Cyan glow */
+    font-family: 'Share Tech Mono', monospace;
+    z-index: 20; /* Ensure it's on top of other elements */
+}
+
+.ai-voice-toggle-button:hover {
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-magenta)); /* Purple/Magenta on hover */
+    box-shadow: var(--glow-strength) var(--neon-magenta);
+    transform: translateX(-50%) translateY(-2px); /* Lift slightly on hover */
+}
+
+.ai-voice-toggle-button .button-label {
+    margin-left: 8px; /* Space between icon and text */
+}

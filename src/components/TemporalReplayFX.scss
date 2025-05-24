@@ -1,0 +1,85 @@
+.temporal-replay-fx {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20; /* Position above video and HUD */
+    /* Desaturation, brightness, and contrast for a "temporal" look */
+    filter: grayscale(100%) saturate(200%) brightness(70%) contrast(120%);
+    animation: temporalGlitch 0.3s ease-in-out infinite alternate; /* Subtle, continuous glitch */
+    pointer-events: none; /* Make it a visual-only effect */
+    /* Add a subtle grid pattern for a digital feel */
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 10px 10px; /* Small grid size */
+    box-shadow: inset 0 0 20px rgba(255, 0, 255, 0.2); /* Subtle inner glow */
+}
+
+@keyframes temporalGlitch {
+    0%, 100% { transform: perspective(1000px) rotateX(0deg) scale(1); opacity: 1; }
+    25% { transform: perspective(1000px) rotateX(0.5deg) scale(1.002); opacity: 0.98; filter: hue-rotate(2deg); }
+    75% { transform: perspective(1000px) rotateX(-0.5deg) scale(0.998); opacity: 0.98; filter: hue-rotate(-2deg); }
+}
+
+.distortion-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Repeating linear gradient for scanline-like distortion */
+    background: repeating-linear-gradient(
+        transparent,
+        rgba(255, 0, 255, 0.1) 1px, /* Magenta glitch lines */
+        transparent 5px
+    );
+    animation: subtleDistortion 1s linear infinite alternate; /* Faster, more noticeable distortion */
+}
+
+@keyframes subtleDistortion {
+    0% { transform: translate(0, 0); opacity: 0.6; }
+    100% { transform: translate(10px, 10px); opacity: 0.7; }
+}
+
+.grain-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15; /* Adjust as needed */
+    pointer-events: none; /* Make it unclickable */
+    /* --- CSS-only grain effect --- */
+    background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 2px 2px; /* Controls density of "grain" */
+    animation: grainAnimation 0.1s steps(1) infinite; /* Fast flicker */
+    /* --- End CSS-only grain effect --- */
+    z-index: 20; /* Ensure it's on top of video/HUD */
+}
+
+@keyframes grainAnimation {
+    0% { background-position: 0 0; }
+    100% { background-position: 2px 2px; } /* Shifts by grain size */
+}
+
+@keyframes grainAnimation {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+.slow-motion-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    color: var(--neon-magenta); /* Magenta for slow-mo text */
+    text-shadow: 0 0 15px var(--neon-magenta), 0 0 30px rgba(255, 0, 255, 0.5);
+    opacity: 0.8;
+    animation: textFlicker 0.2s steps(1) infinite; /* Fast text flicker */
+}
+
+@keyframes textFlicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}

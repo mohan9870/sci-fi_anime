@@ -1,0 +1,149 @@
+.top-movies-container {
+  padding: 20px;
+  background-color: #0a0a0a; /* Consistent dark background */
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top-movies-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes button to left, heading to center-right */
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 0 1rem; /* Horizontal padding for the header */
+
+  .section-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff0099; /* Example color, adjust as needed */
+    margin-bottom: 0; /* Remove default margin */
+    flex-grow: 1; /* Allows heading to take available space */
+    text-align: center; /* Centers the text within its flex space */
+  }
+}
+
+.back-button {
+  background: transparent !important; /* Force transparent background */
+  border: none !important; /* Force no border */
+  outline: none !important; /* Force no outline on focus */
+  box-shadow: none !important; /* Force no box shadow */
+  text-shadow: none !important; /* Force no text shadow */
+  color: #00f9ff !important; /* Neon blue color for the arrow */
+  padding: 0 !important; /* Force no padding */
+  margin-top: 90px; /* Force no margin */
+  border-radius: 0 !important; /* Force no rounded corners */
+  font-size: 1.8rem !important; /* Size of the arrow */
+  font-weight: normal !important; /* Ensure no bolding */
+  display: flex !important; /* Use flexbox to center the content (arrow) */
+  align-items: center !important; /* Center vertically */
+  justify-content: center !important; /* Center horizontally */
+  line-height: 1 !important; /* Ensure line height doesn't add extra space */
+  cursor: pointer !important; /* Ensure cursor is a pointer */
+  -webkit-appearance: none !important; /* Remove default button styles for Webkit browsers */
+  -moz-appearance: none !important; /* Remove default button styles for Mozilla browsers */
+  appearance: none !important; /* Remove default button styles */
+  flex-shrink: 0; /* Prevent button from shrinking */
+
+  &:hover {
+    color: #00e0e6 !important; /* Slight color change on hover */
+  }
+}
+
+.top-movies-section {
+  margin-bottom: 3rem; /* Space between sections if there are multiple */
+}
+
+.top-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 1.5rem; /* Space between cards */
+  justify-items: center; /* Center items in the grid */
+}
+
+.top-movie-card {
+  background: #111;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Ensure card takes full width of its grid column */
+  max-width: 250px; /* Optional: Limit max width of a card */
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  .movie-img {
+    width: 100%;
+    height: 280px; /* Consistent image height */
+    object-fit: cover;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .movie-title {
+    padding: 0.8rem 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .top-movies-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .top-movies-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0 1rem;
+  }
+  .top-movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .movie-img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-movies-container {
+    padding: 10px;
+  }
+  .top-movies-header {
+    .section-heading {
+      font-size: 1.5rem;
+    }
+  }
+  .back-button {
+    font-size: 1.5rem !important;
+  }
+  .top-movies-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
+  .movie-img {
+    height: 180px;
+  }
+  .movie-title {
+    font-size: 0.9rem;
+  }
+}

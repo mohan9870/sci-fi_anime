@@ -1,0 +1,211 @@
+.homepage {
+  background-color: #0a0a0a;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  padding-bottom: 50px;
+  overflow-x: hidden; // Ensure no overall horizontal scroll due to body margin/padding
+
+  // --- Styles for the main hero slider (re-added/adjusted) ---
+  .hero-slider-section { // Renamed from .slider-section
+    position: relative;
+    width: 100%;
+    height: 90vh; /* Full viewport height for the hero section */
+    overflow: hidden;
+    display: flex;
+    align-items: center; // Vertically center content
+    justify-content: flex-start; // Align content to the start
+
+    .slider-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4); // Darken image for text readability
+      z-index: 0;
+    }
+
+    .slider-info {
+      position: relative; // Position relative to hero-slider-section
+      z-index: 1; // Ensure text is above the image
+      max-width: 50%; // Limit width of text for readability
+      margin-left: 5%; // Space from the left edge
+      padding: 20px;
+      // text-shadow: 0 0 15px rgba(0, 249, 255, 0.7); // Subtle glow
+      // background: rgba(0, 0, 0, 0.3); // Optional: subtle background for text
+      // border-radius: 10px;
+
+      h2 {
+        font-size: 3.5rem; // Larger title
+        color: #00f9ff;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 15px #00f9ff; // Stronger glow
+      }
+
+      p {
+        font-size: 1.3rem; // Larger description
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        // text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      }
+
+      .button-group {
+        display: flex;
+        gap: 1.5rem; // More space between buttons
+
+        .watch-now-btn,
+        .add-wishlist-btn { // Apply general button styles
+          display: flex;
+          align-items: center;
+          gap: 0.8rem; // More space between icon and text
+          padding: 0.8rem 2rem; // Larger padding for buttons
+          border: none;
+          border-radius: 30px;
+          font-size: 1.1rem; // Larger font size
+          font-weight: 700; // Bolder font
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); // Subtle button shadow
+
+          svg {
+            font-size: 1.4rem; // Larger icons
+          }
+        }
+
+        .watch-now-btn {
+          background: #00f9ff;
+          color: #000;
+          box-shadow: 0 0 20px #00f9ff; // Stronger glow for primary button
+
+          &:hover {
+            background: #0ff;
+            transform: translateY(-2px); // Subtle lift
+            box-shadow: 0 0 30px #0ff;
+          }
+        }
+
+        .add-wishlist-btn {
+          background: transparent;
+          border: 2px solid #fff; // Thicker border
+          color: #fff;
+
+          &:hover {
+            border-color: #ff007a;
+            color: #ff007a;
+            transform: translateY(-2px); // Subtle lift
+            background: rgba(255, 0, 122, 0.1); // Slight background on hover
+          }
+        }
+      }
+    }
+  }
+
+  .video-player-container { // Renamed from .video-player-container (in previous SCSS)
+    position: absolute; /* Occupy hero section space */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Take full height of parent */
+    background-color: #000;
+    z-index: 5; // Ensure video is on top when playing
+
+    .close-video-btn { // Renamed from .close-video
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 1.8rem; // Larger close button
+      background: rgba(0, 0, 0, 0.5); // Background for visibility
+      border: none;
+      border-radius: 50%; // Circular button
+      color: #fff;
+      cursor: pointer;
+      z-index: 10;
+      padding: 10px 15px; // Padding for circular shape
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: #ff0059;
+        background: rgba(255, 0, 89, 0.7);
+      }
+    }
+
+    .video-player { // Renamed from .video-player
+      width: 100%;
+      height: 100%;
+      object-fit: contain; // Use 'contain' to ensure video fits without cropping
+      background-color: #000; // Black background for letterboxing
+    }
+  }
+
+
+  // --- Styles for the horizontally scrolling content rows (mostly unchanged) ---
+  h2 { // Applies to row headings as well
+    font-size: 2rem;
+    color: #00f9ff;
+    text-shadow: 0 0 6px #00f9ff;
+    margin-bottom: 1.5rem;
+    padding-left: 20px; // Add some padding for heading
+  }
+
+  .content-row-section {
+    padding: 2rem 0; // Padding top/bottom, no horizontal padding here as rows will scroll
+    margin-bottom: 30px; // Space between rows
+    position: relative;
+  }
+
+  .content-row-items {
+    display: flex;
+    overflow-x: auto; // Enable horizontal scrolling
+    padding: 0 20px; // Padding on the sides for scrollable content
+    gap: 15px; // Space between items
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    // Hide scrollbar but keep functionality
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .content-row-item {
+    flex-shrink: 0;
+    width: 180px;
+    background-color: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+
+    scroll-snap-align: start;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 249, 255, 0.5); // Add a glow on hover
+    }
+
+    img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      display: block;
+    }
+
+    p {
+      text-align: center;
+      padding: 0.8rem 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

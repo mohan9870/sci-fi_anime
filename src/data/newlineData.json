@@ -1,0 +1,117 @@
+[
+    {
+        "id": "ep001",
+        "date": "2025-01-15T10:00:00Z",
+        "title": "Amnesia Protocol Activated",
+        "type": "episode_unlock",
+        "description": "The protagonist wakes up with no memory, initiating the core narrative.",
+        "tag": null,
+        "details": {}
+    },
+    {
+        "id": "upgrade001",
+        "date": "2025-02-01T14:30:00Z",
+        "title": "Neural Interface Online",
+        "type": "character_upgrade",
+        "description": "First cybernetic mod installed, granting basic data stream perception.",
+        "details": {
+            "mod": "Neural Interface v1.0",
+            "effect": "Enhanced data perception",
+            "aiSyncPercent": "10%"
+        }
+    },
+    {
+        "id": "event001",
+        "date": "2025-03-10T08:00:00Z",
+        "title": "Whispers from the Void",
+        "type": "key_moment",
+        "description": "First enigmatic contact with an unknown cosmic entity, hinting at larger forces.",
+        "tag": "Galactic Event",
+        "details": {}
+    },
+    {
+        "id": "ep002",
+        "date": "2025-04-05T18:00:00Z",
+        "title": "Echoes of the Past",
+        "type": "episode_unlock",
+        "description": "Fragmented memories begin to surface, providing clues to the protagonist's origin.",
+        "tag": null,
+        "details": {}
+    },
+    {
+        "id": "critical001",
+        "date": "2025-05-20T22:00:00Z",
+        "title": "Temporal Rift Manifests",
+        "type": "key_moment",
+        "description": "A tear in the fabric of space-time appears, causing localized temporal distortions.",
+        "tag": "Temporal Shift",
+        "details": {
+            "severity": "High",
+            "impact": "Localized time dilation"
+        }
+    },
+    {
+        "id": "upgrade002",
+        "date": "2025-06-15T09:00:00Z",
+        "title": "Chronosensory Module",
+        "type": "character_upgrade",
+        "description": "New implant enables minor temporal distortion perception and resistance.",
+        "details": {
+            "mod": "Chronosensory Module v1.0",
+            "effect": "Time distortion perception",
+            "timeAlterationEffect": "10% time dilation resistance",
+            "aiSyncPercent": "25%"
+        }
+    },
+    {
+        "id": "critical002",
+        "date": "2025-07-01T03:00:00Z",
+        "title": "System Core Compromised",
+        "type": "key_moment",
+        "description": "The central AI network faces a critical, unknown intrusion, threatening all systems.",
+        "tag": "System Breach",
+        "details": {
+            "threatLevel": "Critical",
+            "affectedSystems": "All core functions"
+        }
+    },
+    {
+        "id": "ep003",
+        "date": "2025-08-12T11:00:00Z",
+        "title": "The Chronos Conundrum",
+        "type": "episode_unlock",
+        "description": "A desperate race against time to understand and mend the temporal anomalies.",
+        "tag": null,
+        "details": {}
+    },
+    {
+        "id": "upgrade003",
+        "date": "2025-09-01T16:00:00Z",
+        "title": "AI Sync Optimization",
+        "type": "character_upgrade",
+        "description": "AI synchronization significantly improved, unlocking new cognitive abilities.",
+        "details": {
+            "mod": "Cognitive Uplink v2.0",
+            "effect": "Enhanced processing speed",
+            "aiSyncPercent": "60%"
+        }
+    },
+    {
+        "id": "event002",
+        "date": "2025-10-05T07:00:00Z",
+        "title": "Nebula Collapse",
+        "type": "key_moment",
+        "description": "A nearby nebula undergoes a rapid, unexpected collapse, altering cosmic pathways.",
+        "tag": "Galactic Event",
+        "details": {}
+    },
+    {
+        "id": "ep004",
+        "date": "2025-11-18T20:00:00Z",
+        "title": "The Nexus Point",
+        "type": "episode_unlock",
+        "description": "Discovery of a central nexus that holds the key to the timeline's stability.",
+        "tag": null,
+        "details": {}
+    }
+]

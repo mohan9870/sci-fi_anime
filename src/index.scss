@@ -1,0 +1,35 @@
+html, body, #root { /* Target all three for full height */
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Make them take 100% of the viewport height */
+  /* Remove min-height: 100vh here as height: 100% is sufficient for the flex layout */
+  /* Remove height: auto; as it contradicts height: 100% */
+  overflow-x: hidden; /* Keep this to prevent horizontal scrollbars */
+  box-sizing: border-box; /* Good practice */
+}
+
+body {
+  font-family: 'Orbitron', sans-serif; /* Your preferred font. Make sure it's imported globally. */
+
+  /* Your background styles */
+  background-image: radial-gradient(circle at top, #0f0f1a, #050510);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Optional: Makes the background static while content scrolls */
+
+  color: #fff; /* White text for visibility on dark background */
+
+  /* This is crucial for the sticky footer: */
+  display: flex;
+  flex-direction: column;
+  // If #root is the flex container, then apply this to #root instead of body.
+  // In a Create React App, #root is the typical place where the App component is mounted.
+  // So, ensure either body or #root (or both) are set as flex column containers.
+  // For most React apps, applying `display: flex; flex-direction: column;` to `#root` is more common
+  // and reliable because the `App` component is directly rendered inside `#root`.
+  // Let's assume you'll apply it to #root via an .app-container class as suggested previously.
+}
+main{
+  margin-top: 85px
+}
