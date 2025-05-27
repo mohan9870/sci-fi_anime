@@ -32,9 +32,13 @@
   display: flex;
   list-style: none;
   gap: 2.5rem; // Increased gap for spacing
+  align-items: center;
 }
 
 .nav-item {
+  display: flex;
+  align-items: center;
+
   a {
     color: #ccc; // Default link color
     text-decoration: none;
@@ -44,12 +48,15 @@
     font-size: 1.1rem;
     font-weight: 500;
     font-family: 'Open Sans', sans-serif; // Or your preferred text font
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-    &:hover {
-      color: #fff;
-      background-color: rgba(0, 249, 255, 0.15); // Subtle neon background on hover
-      text-shadow: 0 0 8px #00f9ff; // Subtle text glow on hover
-    }
+  a:hover {
+    color: #fff;
+    background-color: rgba(0, 249, 255, 0.15); // Subtle neon background on hover
+    text-shadow: 0 0 8px #00f9ff; // Subtle text glow on hover
   }
 
   // --- Active Link Highlighting ---
@@ -60,6 +67,19 @@
     font-weight: bold !important;
     text-shadow: 0 0 12px #00f9ff !important; // Prominent text glow
     transform: translateY(-2px) !important; // Slight lift
+  }
+}
+
+// Genres icon style for desktop menu
+.genres-icon {
+  font-size: 1.2rem;
+  color: #00f9ff;
+  text-shadow: 0 0 5px #00f9ff;
+  transition: color 0.3s ease;
+
+  a:hover & {
+    color: #00fff7;
+    text-shadow: 0 0 10px #00fff7;
   }
 }
 
@@ -162,14 +182,16 @@
       text-decoration: none;
       font-size: 1.5rem;
       padding: 0.8rem;
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       transition: all 0.3s ease;
+    }
 
-      &:hover {
-        color: #00f9ff;
-        background-color: rgba(0, 249, 255, 0.1);
-        text-shadow: 0 0 10px #00f9ff;
-      }
+    a:hover {
+      color: #00f9ff;
+      background-color: rgba(0, 249, 255, 0.1);
+      text-shadow: 0 0 10px #00f9ff;
     }
 
     // --- Active Mobile Link Highlighting ---
@@ -181,6 +203,13 @@
       text-shadow: 0 0 15px #00f9ff !important;
     }
   }
+}
+
+// Genres icon for mobile menu
+.mobile-genres-icon {
+  font-size: 1.5rem;
+  color: #00f9ff;
+  text-shadow: 0 0 8px #00f9ff;
 }
 
 .mobile-menu-icons {

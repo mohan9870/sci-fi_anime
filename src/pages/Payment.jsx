@@ -58,7 +58,7 @@ const Payment = () => {
       setLoading(true);
       toast.success("Payment Successful!");
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/home");
       }, 2000);
     }
   };
@@ -88,7 +88,7 @@ const Payment = () => {
 
   return (
     <div className="payment-page">
-      <button className="back-arrow" onClick={() => navigate("/subplans")}>
+      <button className="back-arrow" onClick={() => navigate("/subscriptionplans")}>
         <FaArrowLeft size={24} />
       </button>
 

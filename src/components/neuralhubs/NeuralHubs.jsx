@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa"; // Import FaArrowLeft
 
 const leaderboardData = [
   { rank: 1, name: "StarNeko", score: 9850, role: "Binge-Watcher" },
@@ -36,6 +38,8 @@ const neuralHubsData = [
 ];
 
 export default function SciFiLeaderboardNeuralHubs() {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="sci-fi-container">
@@ -74,6 +78,46 @@ export default function SciFiLeaderboardNeuralHubs() {
           </div>
         </section>
       </div>
+
+      {/* Left Arrow Button positioned at the top left */}
+      <button
+        style={{
+          position: 'fixed',
+          top: '20px',
+          left: '20px', // Position on the left
+          marginTop:'47px',
+          backgroundColor: 'transparent',
+          border: 'none',
+          color: '#00f0ff', // A sci-fi blue/cyan color
+          cursor: 'pointer',
+          fontSize: '2em',
+          zIndex: 1000,
+        }}
+        onClick={() => navigate('/timeline')} // Navigate to /timeline
+        aria-label="Go to Timeline page"
+      >
+        <FaArrowLeft />
+      </button>
+
+      {/* Right Arrow Button positioned at the top right */}
+      <button
+        style={{
+          position: 'fixed', // Use fixed to keep it in view regardless of scroll
+          top: '20px',       // 20px from the top
+          right: '20px',     // 20px from the right
+            marginTop:'47px',
+          backgroundColor: 'transparent', // No background color
+          border: 'none',    // No border
+          color: '#00f0ff',  // Consistent sci-fi blue/cyan
+          cursor: 'pointer', // Show pointer on hover
+          fontSize: '2em',   // Adjust icon size
+          zIndex: 1000,      // Ensure it's above other content
+        }}
+        onClick={() => navigate('/video')} // Corrected this to '/video' as per the previous logic
+        aria-label="Go to Video page" // Updated aria-label
+      >
+        <FaArrowRight />
+      </button>
 
       <style jsx>{`
         :root {

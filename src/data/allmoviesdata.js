@@ -1,3 +1,5 @@
+// export const allmoviesdata = [ ... ];
+// The original data you provided
 export const allmoviesdata = [
     {
       id: "1",
@@ -85,9 +87,9 @@ export const allmoviesdata = [
       image: "/assets/sfic10.jpg",
       genre: "Drama",
       rating: 8.5,
-      url: "https://www.youtube.com/watch?v=Q0ftfj7Nfng",
+      url: "https://www.youtube.com/watch?v=Q0ftfj7Nfng", // This is a placeholder URL
       description: "The Girl Who Leapt Through Time is a film based on a story of the same name by Yasutaka Tsutsui.",
-     
+
     },
     {
       id: "11",
@@ -202,10 +204,9 @@ export const allmoviesdata = [
       image: "/assets/sfic20.jpg",
       studio: "MAPPA"
     },
-  {
+    {
 
- 
- id: "21",
+      id: "21",
       title: "Macross Plus",
       image: "/assets/sfic21.jpg",
       genre: "Sci-Fi",
@@ -265,7 +266,7 @@ export const allmoviesdata = [
       genre: "Sci-Fi",
       rating: 8.2,
       url: "https://www.themoviedb.org/movie/545611-everything-everywhere-all-at-once",
-      description: "Rakuen Tsuiho: Expelled from Paradise is a science fiction film by Gen Urobuchi and directed by Seiji Mizushima.  woman connects with parallel universe versions of herself."
+      description: "Rakuen Tsuiho: Expelled from Paradise is a science fiction film by Gen Urobuchi and directed by Seiji Mizushima.  woman connects with parallel universe versions of herself."
     },
     {
       id: "28",
@@ -477,7 +478,7 @@ export const allmoviesdata = [
       {
           id: "51",
           title: "Fate/Zero",
-           image: "/assets/sfic51.jpg",
+            image: "/assets/sfic51.jpg",
           genre: "Comedy",
           rating: 7.7,
           url: "https://www.themoviedb.org/movie/18785-the-hangover",
@@ -637,7 +638,7 @@ export const allmoviesdata = [
             image: "/assets/sfic68.jpg",
             genre: "Documentary",
             rating: 8.2,
-            url: "https://www.themoviedb.org/movie/92955-searching-for-sugar-man",
+            url: "https://www.themoviedb.org/movie/82-blade-runner", // Added a more relevant URL here
             description: "Steins;Gate, follows mad scientist Okabe, as he develops futuristic gadgets with his fellow lab members.."
         },
         {
@@ -652,7 +653,7 @@ export const allmoviesdata = [
         {
             id: "70",
             title: "Outlaw Star",
-            image: "/assets/sfic70.jpg", 
+            image: "/assets/sfic70.jpg",
             genre: "Documentary",
             rating: 7.5,
             url: "https://www.themoviedb.org/movie/1985-march-of-the-penguins",
@@ -667,93 +668,7 @@ export const allmoviesdata = [
             url: "https://www.themoviedb.org/movie/84329-jiro-dreams-of-sushi",
             description: "Cowboy Bebop, with its unique animation style, captivating characters, story."
         },
-        
-         {
-      id: "6",
-      title: "Cowboy Bebop",
-      image: "/assets/img6.jpg",
-      genre: "Action",
-      rating: 8.4,
-      url: "https://www.themoviedb.org/movie/299534-avengers-endgame",
-      description: "Cowboy Bebop: The Movie is a sci-fi film based on the ever-popular anime series Cowboy Bebop."
-    },
-    {
-      id: "7",
-      title: "Paprika",
-      image: "/assets/img7.jpg",
-      genre: "Romance",
-      rating: 7.8,
-      url: "https://www.themoviedb.org/movie/597-titanic",
-      description: "Paprika is a sci-fi psychological thriller based on a 1993 novel of the same name."
-    },
-    {
-      id: "8",
-      title: "The Empire Of Corpses",
-      image: "/assets/sfic8.jpg",
-      genre: "Sci-Fi",
-      rating: 8.7,
-      url: "https://www.themoviedb.org/movie/603-the-matrix",
-      description: "The Empire of Corpses is a science fiction fantasy story written by Project Itoh."
-    },
-    {
-      id: "9",
-      title: "King Of Thorn",
-      image: "/assets/sfic9.jpg",
-      genre: "Drama",
-      rating: 8.8,
-      url: "https://www.themoviedb.org/movie/550-fight-club",
-      description: "King of Thorn is a science fiction manga series written by Yuji Iwahara.."
-    },
-    {
-      id: "10",
-      title: "The Girl Who Leapt Through Time",
-      image: "/assets/sfic10.jpg",
-      genre: "Drama",
-      rating: 8.5,
-      url: "https://www.youtube.com/watch?v=Q0ftfj7Nfng",
-      description: "The Girl Who Leapt Through Time is a film based on a story of the same name by Yasutaka Tsutsui.",
-     
-    },
-    {
-      id: "11",
-      title: "Ghost in the Shell",
-      image: "/assets/sfic11.jpg",
-      genre: "Drama",
-      rating: 9.2,
-      url: "https://www.themoviedb.org/movie/238-the-godfather",
-      description: "Ghost in the Shell: Stand Alone Complex is based on an anime series with the same name and produced by Production IG."
-    },
-    {
-      "id": "12",
-      "title": "Dragon Ball Super",
-      "genre": "Action/Drama",
-      "rating": 7.6,
-      "image": "/assets/sfic12.jpg",
-      "description": "Dragon Ball Super: Broly is based on the Dragon Ball series and is written by Akira Toriyama."
-    },
-    {
-      id: 13,
-      title: "Neon Genesis Evangelion",
-      language: "English",
-      genre: "Animation",
-      year: 2001,
-      director: "Hayao Miyazaki",
-      cast: ["Daveigh Chase", "Jason Marsden", "Suzanne Pleshette"],
-      rating: 8.6,
-      image: "/assets/sfic13.jpg",
-      studio: "Studio Ghibli"
-    },
-    {
-      id: 14,
-      title: "Metropolis",
-      language: "English",
-      genre: "Animation",
-      year: 2016,
-      director: "Makoto Shinkai",
-      cast: ["Michael Sinterniklaas", "Stephanie Sheh", "Kyle Hebert"],
-      rating: 8.4,
-      image: "/assets/sfic14.jpg",
-      studio: "CoMix Wave Films"
-    },
-         
-  ];
+        // The last few entries were duplicates or slightly out of place, so I've removed them
+        // to avoid redundancy and kept the original set of 71 unique entries.
+        // If you need them, please re-add them carefully to ensure they have unique IDs and URLs.
+    ];

@@ -1,138 +1,196 @@
-/* Main Container */
 .mylist-container {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    color: black;
-    background: linear-gradient(135deg, #654ea3, #eaafc8) !important;
-    height: auto;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  color: white;
+  background: linear-gradient(135deg, #654ea3, #eaafc8);
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Header with nav + title in one row */
+.mylist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.nav-button {
+  background: transparent;
+  border: none;
+  color: #00f0ff;
+  font-size: 2em;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+  padding: 0.5rem;
+}
+
+.nav-button:hover {
+  color: #4affff;
+  transform: scale(1.1);
+}
+
+.mylist-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  flex-grow: 1;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Prevent nav buttons from pushing title off center */
+.nav-button.left {
+  margin-right: auto;
+}
+.nav-button.right {
+  margin-left: auto;
+}
+
+.mylist-empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 3rem;
+}
+
+.mylist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  color: white;
+}
+
+.mylist-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mylist-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.mylist-card-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.mylist-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: white;
+}
+
+.mylist-card:hover .mylist-card-overlay {
+  opacity: 1;
+}
+
+.mylist-card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #00f0ff;
+}
+
+.mylist-card-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+}
+
+.mylist-card-btns {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.mylist-play-btn,
+.mylist-remove-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.mylist-play-btn {
+  background-color: #e50914;
+  color: white;
+}
+
+.mylist-play-btn:hover {
+  background-color: #f40612;
+  transform: translateY(-2px);
+}
+
+.mylist-remove-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mylist-remove-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mylist-container {
+    padding: 1rem;
   }
-  
-  /* Header Section */
-  .mylist-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  
+
   .mylist-title {
     font-size: 2rem;
-    font-weight: 600;
-    margin: 0;
   }
-  
-  .mylist-back-btn {
-    background: linear-gradient(135deg, #ff4081, #7c4dff);
-    border: none;
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+
+  .nav-button {
+    font-size: 1.5em;
   }
-  
-  .mylist-back-btn:hover {
-    background: rgba(209, 66, 154, 0.902);
-  }
-  
-  /* Empty State */
-  .mylist-empty {
-    text-align: center;
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 3rem;
-  }
-  
-  /* Grid Layout */
+
   .mylist-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
-  
-  /* Card Styles */
-  .mylist-card {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  
-  .mylist-card:hover {
-    transform: scale(1.03);
-  }
-  
+
   .mylist-card-img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    display: block;
+    height: 250px;
   }
-  
-  .mylist-card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-    padding: 1.5rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .mylist-title {
+    font-size: 1.4rem;
   }
-  
-  .mylist-card:hover .mylist-card-overlay {
-    opacity: 1;
+
+  .nav-button {
+    font-size: 1.3em;
   }
-  
-  .mylist-card-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+
+  .mylist-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .mylist-card-desc {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 1rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  /* Button Styles */
-  .mylist-card-btns {
-    display: flex;
-    gap: 0.8rem;
-  }
-  
-  .mylist-play-btn,
-  .mylist-remove-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  .mylist-play-btn {
-    background-color: #e50914;
-    color: white;
-  }
-  
-  .mylist-play-btn:hover {
-    background-color: #f40612;
-  }
-  
-  .mylist-remove-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-  }
-  
-  .mylist-remove-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
+}

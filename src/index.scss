@@ -30,6 +30,30 @@ body {
   // and reliable because the `App` component is directly rendered inside `#root`.
   // Let's assume you'll apply it to #root via an .app-container class as suggested previously.
 }
-main{
-  margin-top: 85px
+.sci-fi-player-container {
+    position: relative;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-bg);
+    overflow: hidden; /* Ensures all effects are contained within */
+}
+
+/* Base video element styling */
+.video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video covers the container */
+    display: block; /* Removes extra space below video */
+    transition: filter 0.2s ease-out, transform 0.2s ease-out; /* Adjusted for more dramatic effects */
+}
+
+/* Hide default video controls if you are using custom ones */
+video::-webkit-media-controls {
+    display: none !important;
+}
+video::-webkit-media-controls-enclosure {
+    display: none !important;
 }

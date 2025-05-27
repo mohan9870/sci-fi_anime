@@ -28,7 +28,7 @@ const Movie = () => {
         <h1>Movies</h1>
         <button
           onClick={() => {
-            navigate('/dashboard');
+            navigate('/home');
             window.scrollTo(0, 0);
           }}
           className='back-button'

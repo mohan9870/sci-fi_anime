@@ -1,0 +1,97 @@
+$bg-dark: #0a0b13;
+$neon-yellow: #ffe600;
+$neon-glow: rgba(255, 230, 0, 0.25);
+$font: 'Orbitron', 'Segoe UI', Tahoma, sans-serif;
+
+.distopian-container {
+  padding: 4rem 2rem;
+  background-color: $bg-dark;
+  color: #fff;
+  font-family: $font;
+  min-height: 100vh;
+}
+
+.distopian-title {
+  text-align: center;
+  font-size: 3rem;
+  color: $neon-yellow;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px $neon-yellow;
+}
+
+.distopian-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.distopian-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 15px $neon-glow;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    .distopian-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+.distopian-image {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: filter 0.3s ease;
+}
+
+.distopian-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(10, 10, 20, 0.95), transparent);
+  padding: 1rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.distopian-name {
+  font-size: 1.4rem;
+  color: $neon-yellow;
+  margin-bottom: 0.3rem;
+}
+
+.launch-button {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #000;
+  background-color: $neon-yellow;
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #000;
+    color: $neon-yellow;
+    border: 1px solid $neon-yellow;
+  }
+}
+
+@media (max-width: 768px) {
+  .distopian-title {
+    font-size: 2.4rem;
+  }
+
+  .distopian-image {
+    height: 240px;
+  }
+}

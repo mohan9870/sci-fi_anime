@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Howl } from 'howler';
-import './MissionControlUI.scss'; // Renamed SCSS file
+import './MissionControlUI.scss';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'; // Ensure FaArrowLeft is imported
 
 // Mission data
 const missions = [
@@ -9,7 +11,7 @@ const missions = [
     title: "Operation: Chrono-Trigger",
     status: "unlocked", // Can be 'locked', 'unlocked', 'completed'
     type: "expedition", // Corresponds to "Mission Nodes"
-    videoUrl: "/videos/episode1.mp4.mp4", // Placeholder video (corrected .mp4.mp4 to .mp4)
+    videoUrl: "/videos/episode1.mp4",
     tag: "Temporal Anomaly", // Critical tag
     description: "Initiate temporal distortion sequence. Navigate the fractured realities to retrieve lost data fragments.",
     upgrades: ["Neural Link Activated", "AI Sync 20%"],
@@ -31,7 +33,7 @@ const missions = [
   {
     id: 3,
     title: "Recon: Golden Spire",
-    status: "unlocked", // Changed from 'locked' to 'unlocked'
+    status: "unlocked",
     type: "recon",
     videoUrl: "/videos/episode3.mp4",
     tag: "Galactic Event",
@@ -43,7 +45,7 @@ const missions = [
   {
     id: 4,
     title: "Deep Dive: Data Stream",
-    status: "unlocked", // Changed from 'locked' to 'unlocked'
+    status: "unlocked",
     type: "expedition",
     videoUrl: "/videos/episode4.mp4",
     tag: "Temporal Anomaly",
@@ -55,7 +57,7 @@ const missions = [
   {
     id: 5,
     title: "Directive: Chronal Flux",
-    status: "unlocked", // Changed from 'locked' to 'unlocked'
+    status: "unlocked",
     type: "mission",
     videoUrl: "/videos/episode5.mp4",
     tag: "Time Alteration",
@@ -72,28 +74,28 @@ const sounds = {
   'System Breach': new Howl({ src: ['/sounds/system_breach.mp3.wav'], volume: 0.8, preload: true }),
   'Galactic Event': new Howl({ src: ['/sounds/galactic_event.mp3.wav'], volume: 0.75, preload: true }),
   'Time Alteration': new Howl({ src: ['/sounds/time_alteration.mp3.wav'], volume: 0.7, preload: true }),
-  'expedition': new Howl({ src: ['/sounds/unlock_chime.mp3.wav'], volume: 0.5, preload: true }), // Generic mission start sound
-  'mission': new Howl({ src: ['/sounds/upgrade_sound.mp3.wav'], volume: 0.6, preload: true }), // Generic mission start sound
-  'recon': new Howl({ src: ['/sounds/event_ping.mp3.wav'], volume: 0.4, preload: true }), // Generic mission start sound
-  'mission_completed': new Howl({ src: ['/sounds/mission_complete.mp3.wav'], volume: 0.9, preload: true }), // New sound for completion
-  'error_locked': new Howl({ src: ['/sounds/error_locked.mp3.wav'], volume: 0.7, preload: true }), // New sound for locked mission
+  'expedition': new Howl({ src: ['/sounds/unlock_chime.mp3.wav'], volume: 0.5, preload: true }),
+  'mission': new Howl({ src: ['/sounds/upgrade_sound.mp3.wav'], volume: 0.6, preload: true }),
+  'recon': new Howl({ src: ['/sounds/event_ping.mp3.wav'], volume: 0.4, preload: true }),
+  'mission_completed': new Howl({ src: ['/sounds/mission_complete.mp3.wav'], volume: 0.9, preload: true }),
+  'error_locked': new Howl({ src: ['/sounds/error_locked.mp3.wav'], volume: 0.7, preload: true }),
 };
 
 const MissionControlUI = () => {
   const [currentMission, setCurrentMission] = useState(null);
-  // State to track mission progress (sectors completed, logs unlocked)
+  const navigate = useNavigate();
+
   const [missionProgress, setMissionProgress] = useState(
     missions.reduce((acc, mission) => {
       acc[mission.id] = {
         sectorsCompleted: 0,
         logsUnlocked: 0,
-        completed: mission.status === 'completed', // Initialize based on data
+        completed: mission.status === 'completed',
       };
       return acc;
     }, {})
   );
 
-  // Example of how to "complete" a mission or sector
   const handleCompleteSector = (missionId) => {
     setMissionProgress(prevProgress => {
       const newProgress = { ...prevProgress };
@@ -101,16 +103,13 @@ const MissionControlUI = () => {
 
       if (newProgress[missionId].sectorsCompleted < mission.sectors) {
         newProgress[missionId].sectorsCompleted += 1;
-        // Optionally unlock logs as sectors are completed
         if (newProgress[missionId].sectorsCompleted % 2 === 0 && newProgress[missionId].logsUnlocked < mission.logs) {
           newProgress[missionId].logsUnlocked += 1;
         }
       }
 
-      // Check if mission is fully completed
       if (newProgress[missionId].sectorsCompleted === mission.sectors && !newProgress[missionId].completed) {
         newProgress[missionId].completed = true;
-        // Play mission complete sound
         sounds.mission_completed?.play();
       }
       return newProgress;
@@ -120,23 +119,60 @@ const MissionControlUI = () => {
   const handleMissionSelect = (mission) => {
     if (mission.status === 'locked') {
       sounds.error_locked?.play();
-      // Display a message to the user that the mission is locked
-      // (e.g., using a state variable for a temporary message)
       console.log(`Mission ${mission.title} is locked.`);
       return;
     }
     setCurrentMission(mission);
-    // Play sound based on tag, fallback to type
     const soundToPlay = sounds[mission.tag] || sounds[mission.type];
     soundToPlay?.play();
   };
 
   return (
     <div className="mission-control-container">
-      <div className="background-overlay"></div> {/* For starscape/neural grid */}
+      <div className="background-overlay"></div>
       <h1 className="main-title">
         <span className="glitch" data-text="MISSION CONTROL">MISSION CONTROL</span>
       </h1>
+
+      {/* Left Arrow Button positioned at the top left */}
+      <button
+        style={{
+          position: 'fixed',
+          top: '20px',
+          left: '20px', // Positioned on the left
+          marginTop:'48px',
+          backgroundColor: 'transparent',
+          border: 'none',
+          color: '#00f0ff',
+          cursor: 'pointer',
+          fontSize: '2em',
+          zIndex: 1000,
+        }}
+        onClick={() => navigate('/mylist')} // Navigates to /mylist
+        aria-label="Go to My List page"
+      >
+        <FaArrowLeft />
+      </button>
+
+      {/* Right Arrow Button positioned at the top right */}
+      <button
+        style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+           marginTop:'48px',
+          backgroundColor: 'transparent',
+          border: 'none',
+          color: '#00f0ff',
+          cursor: 'pointer',
+          fontSize: '2em',
+          zIndex: 1000,
+        }}
+        onClick={() => navigate('/timeline')}
+        aria-label="Go to Timeline page"
+      >
+        <FaArrowRight />
+      </button>
 
       <div className="mission-dashboard-panel hologram-panel">
         <h2>Mission Dashboard</h2>
@@ -153,7 +189,6 @@ const MissionControlUI = () => {
               <span className="progress-text">
                 Sectors: {missionProgress[mission.id]?.sectorsCompleted || 0}/{mission.sectors} | Logs: {missionProgress[mission.id]?.logsUnlocked || 0}/{mission.logs}
               </span>
-              {/* Add lock symbol for incomplete missions */}
               {!missionProgress[mission.id]?.completed && (
                 <span className="dashboard-lock-icon">🔒</span>
               )}
@@ -174,7 +209,7 @@ const MissionControlUI = () => {
             <span className="node-title">{mission.title}</span>
             {mission.status === 'locked' && <span className="lock-icon">🔒</span>}
             {mission.tag && <span className="tag">{mission.tag}</span>}
-            <div className="light-trail"></div> {/* For synthetic light trail effect */}
+            <div className="light-trail"></div>
           </div>
         ))}
       </div>

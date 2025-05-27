@@ -34,6 +34,19 @@ import DataScanOverlay from './components/DataScanOverlay';
 
 // Import Context Providers
 import { MyListProvider } from './context/MyListContext';
+import Genres from './genres/Genres';
+import SpaceWestern from './genres/Spacewestern';
+import Alien from './genres/Alien';
+import Distopian from './genres/Distopian';
+import Galactic from './genres/Galactic';
+import Futuristic from './genres/Futuristic';
+import Genetic from './genres/Genetic';
+import Mind from './genres/Mind';
+import Post from './genres/Post';
+import Rise from './genres/Rise';
+import Space from './genres/Space';
+import Tech from './genres/Tech';
+import Time from './genres/Time';
 
 
 // Main App component
@@ -96,6 +109,7 @@ function AppContent() {
           <Route path="/latest" element={<LatestReleases />} /> {/* Dedicated Latest Releases page */}
           <Route path="/topmovies" element={<TopMovies />} /> {/* Dedicated Top Movies page */}
           <Route path="/series" element={<SeriesPage />} /> {/* Dedicated Series Page */}
+           <Route path="/genres" element={<Genres />} /> {/* Dedicated Series Page */}
 
 
           {/* Profile & Account Routes */}
@@ -107,12 +121,26 @@ function AppContent() {
           <Route path="/accountsetting" element={<AccountSetting />} />
           <Route path="/presentplan" element={<Presentplan />} />
 
+
           {/* Other Specific Components/Pages */}
           <Route path="/neural" element={<NeuralHubs />} />
           <Route path="/timeline" element={<TimelineVisualization />} />
           <Route path="/mission" element={<MissionControlUI />} />
           <Route path="/video" element={<Video />} />
           <Route path="/overlay" element={<DataScanOverlay />} />
+          <Route path="/spacew" element={<SpaceWestern />} />
+           <Route path="/alien" element={<Alien />} />
+           <Route path="/distopian" element={<Distopian />} />
+           <Route path="/futuristic" element={<Futuristic />} />
+           <Route path="/galactic" element={<Galactic />} />
+           <Route path="/genetic" element={<Genetic/>} />
+           <Route path="/mind" element={<Mind />} />
+           <Route path="/post" element={<Post/>} />
+           <Route path="/rise" element={<Rise/>} />
+           <Route path="/spa" element={<Space/>} />
+           <Route path="/tech" element={<Tech/>} />
+           <Route path="/time" element={<Time/>} />
+          
 
         </Routes>
       </main>
