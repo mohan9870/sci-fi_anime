@@ -1,0 +1,96 @@
+$bg-dark: #12121f;
+$neon-green: #7fff00;
+$neon-glow: rgba(127, 255, 0, 0.25);
+$font: 'Orbitron', 'Segoe UI', Tahoma, sans-serif;
+
+.genetic-container {
+  padding: 4rem 2rem;
+  background-color: $bg-dark;
+  color: #e0ffe0;
+  font-family: $font;
+  min-height: 100vh;
+}
+
+.genetic-title {
+  text-align: center;
+  font-size: 3rem;
+  color: $neon-green;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px $neon-green;
+}
+
+.genetic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.genetic-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 15px $neon-glow;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    .genetic-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+.genetic-image {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: filter 0.3s ease;
+}
+
+.genetic-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(18, 18, 31, 0.95), transparent);
+  padding: 1rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.genetic-name {
+  font-size: 1.4rem;
+  color: $neon-green;
+  margin-bottom: 0.3rem;
+}
+
+.launch-button {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #000;
+  background-color: $neon-green;
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #000;
+    color: $neon-green;
+    border: 1px solid $neon-green;
+  }
+}
+
+@media (max-width: 768px) {
+  .genetic-title {
+    font-size: 2.4rem;
+  }
+
+  .genetic-image {
+    height: 240px;
+  }
+}

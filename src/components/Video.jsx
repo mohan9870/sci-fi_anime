@@ -32,6 +32,12 @@ function Video({ navigateTo }) {
       };
     }
   }, []);
+  const onSeek = (time) => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = time;
+      setCurrentTime(time); // update React state as well
+    }
+  };
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -136,6 +142,7 @@ function Video({ navigateTo }) {
         onQuantumSkip={handleQuantumSkip}
         onTemporalReplay={handleTemporalReplay}
         onToggleDataScan={toggleDataScan}
+        onSeek={onSeek}
         isDataScanning={isDataScanning}
       />
 

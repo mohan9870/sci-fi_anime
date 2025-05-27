@@ -18,7 +18,7 @@ const Footer = () => {
             <li><Link to="/home">Home</Link></li>
             <li><Link to="/movie">Movies</Link></li>
             <li><Link to="/subscriptionplans">Subscription</Link></li>
-            {/* <li><Link to="/genres">Genres</Link></li> */}
+            <li><Link to="/genres">Genres</Link></li> {/* <--- UNCOMMENTED AND ADDED THIS LINE */}
             <li><Link to="/profile">Profile</Link></li> {/* Assuming you have a profile page */}
           </ul>
         </div>
@@ -36,7 +36,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        &copy; 2025 OTT Stream. All rights reserved.
+        © 2025 OTT Stream. All rights reserved.
       </div>
     </footer>
   );

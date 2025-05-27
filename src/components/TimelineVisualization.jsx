@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Howl } from 'howler';
 import './TimelineVisualization.scss';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'; // Import FaArrowLeft
 
 const episodes = [
   {
     id: 1,
     title: "Episode 1: Awakening",
     type: "memory",
-    videoUrl: "/videos/episode1.mp4.mp4",
+    videoUrl: "/videos/episode1.mp4",
     tag: "Temporal Shift",
     description: "Cybernetic memory initialization. Discover the genesis of consciousness within the data stream.",
     upgrades: ["Neural Link Activated", "AI Sync 20%"]
@@ -62,6 +64,7 @@ const sounds = {
 
 const TimelinePlayer = () => {
   const [unlockedEpisode, setUnlockedEpisode] = useState(null);
+  const navigate = useNavigate();
 
   const handleEpisodeClick = (ep) => {
     setUnlockedEpisode(ep);
@@ -73,8 +76,47 @@ const TimelinePlayer = () => {
     <div className="timeline-container">
       <h2 className="timeline-title">🧬 Tech Timeline: Evolution Nodes</h2>
 
+      {/* Right Arrow Button positioned at the top right */}
+      <button
+        style={{
+          position: 'fixed',
+          top: '20px',
+          marginTop:'48px',
+          right: '20px',
+          backgroundColor: 'transparent',
+          border: 'none',
+          color: '#00f0ff',
+          cursor: 'pointer',
+          fontSize: '2em',
+          zIndex: 1000,
+        }}
+        onClick={() => navigate('/neural')}
+        aria-label="Go to Neural page"
+      >
+        <FaArrowRight />
+      </button>
+
+      {/* Left Arrow Button positioned at the top left */}
+      <button
+        style={{
+          position: 'fixed',
+          top: '20px',
+          left: '20px', // Positioned on the left
+          marginTop:'48px',
+          backgroundColor: 'transparent',
+          border: 'none',
+          color: '#00f0ff',
+          cursor: 'pointer',
+          fontSize: '2em',
+          zIndex: 1000,
+        }}
+        onClick={() => navigate('/mission')}
+        aria-label="Go to Mission page"
+      >
+        <FaArrowLeft />
+      </button>
+
       <div className="timeline-genetic-strand-wrapper">
-        {/* REMOVED: <div className="genetic-strand-line"></div> */}
         <div className="episode-nodes-container">
           {episodes.map((ep) => (
             <div

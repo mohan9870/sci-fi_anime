@@ -5,6 +5,14 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { BsBookmarkStar } from "react-icons/bs";
 import { RiUser3Line } from "react-icons/ri";
+import { BiCategory } from "react-icons/bi"; // <-- Keep this import
+
+const menuItems = [
+  { name: "Home", route: "/home" },
+  { name: "Movies", route: "/movie" },
+  { name: "Genres", route: "/genres" }, // <-- Genres text link remains here
+  { name: "Subscription", route: "/subscriptionplans" },
+];
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -17,6 +25,7 @@ const Navbar = () => {
     if (path.includes("/profile")) setActiveMenu("Profile");
     else if (path.includes("/mylist")) setActiveMenu("MyList");
     else if (path.includes("/movie")) setActiveMenu("Movies");
+    else if (path.includes("/genres")) setActiveMenu("Genres"); // <-- Still detect genres active
     else if (path.includes("/subscription") || path.includes("/subscriptionplans"))
       setActiveMenu("Subscription");
     else setActiveMenu("Home");
@@ -41,22 +50,13 @@ const Navbar = () => {
         </div>
 
         <ul className="nav-list desktop">
-          {["Home", "Movies", "Subscription"].map((item, idx) => (
+          {menuItems.map(({ name, route }, idx) => (
             <li
               key={idx}
-              className={activeMenu === item ? "nav-item active" : "nav-item"}
+              className={activeMenu === name ? "nav-item active" : "nav-item"}
             >
-              <Link
-                to={
-                  item === "Home"
-                    ? "/home"
-                    : item === "Movies"
-                    ? "/movie"
-                    : "/subscriptionplans"
-                }
-                onClick={() => handleMenuClick(item)}
-              >
-                {item}
+              <Link to={route} onClick={() => handleMenuClick(name)}>
+                {name}
               </Link>
             </li>
           ))}
@@ -72,6 +72,13 @@ const Navbar = () => {
             <RiUser3Line
               className={`nav-icon ${activeMenu === "Profile" ? "active" : ""}`}
               title="Profile"
+            />
+          </Link>
+          {/* genres icon added here, right of profile icon */}
+          <Link to="/genres" onClick={() => handleMenuClick("Genres")}>
+            <BiCategory
+              className={`nav-icon ${activeMenu === "Genres" ? "active" : ""}`}
+              title="Genres"
             />
           </Link>
           <Link to="/mylist" onClick={() => handleMenuClick("MyList")}>
@@ -94,32 +101,25 @@ const Navbar = () => {
         <div className="mobile-menu-modal">
           <div className="mobile-menu-content">
             <ul className="mobile-nav-list">
-              {["Home", "Movies", "Subscription"].map((item, idx) => (
+              {menuItems.map(({ name, route }, idx) => (
                 <li
                   key={idx}
                   className={
-                    activeMenu === item ? "mobile-nav-item active" : "mobile-nav-item"
+                    activeMenu === name ? "mobile-nav-item active" : "mobile-nav-item"
                   }
                 >
-                  <Link
-                    to={
-                      item === "Home"
-                        ? "/"
-                        : item === "Movies"
-                        ? "/movie"
-                        : "/subscriptionplans"
-                    }
-                    onClick={() => handleMenuClick(item)}
-                  >
-                    {item}
+                  <Link to={route} onClick={() => handleMenuClick(name)}>
+                    {name}
                   </Link>
                 </li>
               ))}
             </ul>
 
             <div className="mobile-menu-icons">
+              {/* Profile, Genres, and MyList icons in order */}
               {[
                 { to: "/profile", icon: RiUser3Line, label: "Profile" },
+                { to: "/genres", icon: BiCategory, label: "Genres" }, // <-- Genres icon added here for mobile
                 { to: "/mylist", icon: BsBookmarkStar, label: "My List" },
               ].map(({ to, icon: Icon, label }, idx) => (
                 <Link
