@@ -9,7 +9,7 @@
   position: relative;
 }
 
-/* Header with nav + title in one row */
+
 .mylist-header {
   display: flex;
   align-items: center;
@@ -43,7 +43,7 @@
   margin: 0;
 }
 
-/* Prevent nav buttons from pushing title off center */
+
 .nav-button.left {
   margin-right: auto;
 }
@@ -158,7 +158,7 @@
   transform: translateY(-2px);
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .mylist-container {
     padding: 1rem;

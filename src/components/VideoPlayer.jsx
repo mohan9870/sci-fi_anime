@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { FaArrowLeft } from 'react-icons/fa'; // Import FaArrowLeft
+import { useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa'; 
 
 function VideoPlayer({ videoRef, isPlaying, src }) {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.muted = false; // Ensure not muted
-      videoRef.current.volume = 1;    // Set max volume
+      videoRef.current.muted = false; 
+      videoRef.current.volume = 1;   
     }
   }, [videoRef]);
 
   return (
-    <div style={{ position: 'relative', width: '100%' }}> {/* Wrapper for positioning */}
+    <div style={{ position: 'relative', width: '100%' }}> 
       <video
         ref={videoRef}
         src={src}
@@ -21,21 +21,21 @@ function VideoPlayer({ videoRef, isPlaying, src }) {
         controls
         autoPlay={false}
       />
-      {/* Left Arrow Button positioned inside the video player's area */}
+     
       <button
         style={{
-          position: 'absolute', // Position relative to the parent div
+          position: 'absolute', 
           top: '20px',
           left: '20px',
           marginTop:'30px',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
           border: 'none',
-          borderRadius: '50%', // Make it round
+          borderRadius: '50%', 
           padding: '10px',
           color: '#fff',
           cursor: 'pointer',
           fontSize: '1.5em',
-          zIndex: 10, // Ensure it's above the video but below controls
+          zIndex: 10, 
         }}
         onClick={() => navigate('/neural')}
         aria-label="Go to Neural page"

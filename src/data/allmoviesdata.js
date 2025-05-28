@@ -1,5 +1,4 @@
-// export const allmoviesdata = [ ... ];
-// The original data you provided
+
 export const allmoviesdata = [
     {
       id: "1",
@@ -87,7 +86,7 @@ export const allmoviesdata = [
       image: "/assets/sfic10.jpg",
       genre: "Drama",
       rating: 8.5,
-      url: "https://www.youtube.com/watch?v=Q0ftfj7Nfng", // This is a placeholder URL
+      url: "https://www.youtube.com/watch?v=Q0ftfj7Nfng", 
       description: "The Girl Who Leapt Through Time is a film based on a story of the same name by Yasutaka Tsutsui.",
 
     },
@@ -638,7 +637,7 @@ export const allmoviesdata = [
             image: "/assets/sfic68.jpg",
             genre: "Documentary",
             rating: 8.2,
-            url: "https://www.themoviedb.org/movie/82-blade-runner", // Added a more relevant URL here
+            url: "https://www.themoviedb.org/movie/82-blade-runner",
             description: "Steins;Gate, follows mad scientist Okabe, as he develops futuristic gadgets with his fellow lab members.."
         },
         {
@@ -668,7 +667,5 @@ export const allmoviesdata = [
             url: "https://www.themoviedb.org/movie/84329-jiro-dreams-of-sushi",
             description: "Cowboy Bebop, with its unique animation style, captivating characters, story."
         },
-        // The last few entries were duplicates or slightly out of place, so I've removed them
-        // to avoid redundancy and kept the original set of 71 unique entries.
-        // If you need them, please re-add them carefully to ensure they have unique IDs and URLs.
+      
     ];

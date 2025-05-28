@@ -1,45 +1,52 @@
+:root {
+    --neon-cyan: #00e5ff;
+    --neon-green: #39ff14;
+    --neon-magenta: #ff00ea;
+    --neon-purple: #8a2be2;
+    --glow-strength: 0 0 10px;
+    --panel-bg-opacity: 0.2;
+    --border-opacity: 0.6;
+}
+
 .hud-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Allows interaction with video below by default */
-    font-family: 'Orbitron', sans-serif; /* A more impactful font for HUD elements */
-    color: var(--neon-cyan); /* Default text color for HUD elements */
-    text-shadow: var(--glow-strength) var(--neon-cyan); /* Subtle text glow */
-    z-index: 10; /* Position above video and background visuals */
-    /* Add subtle flicker animation to the whole HUD */
+    pointer-events: none;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-cyan);
+    text-shadow: var(--glow-strength) var(--neon-cyan);
+    z-index: 10;
     animation: hudFlicker 10s linear infinite alternate;
 }
 
 @keyframes hudFlicker {
     0%, 100% { opacity: 1; }
-    1%, 3%, 5% { opacity: 0.95; } /* Slight dim */
-    2%, 4%, 6% { opacity: 1.05; } /* Slight brighten */
-    10% { filter: brightness(1.1); } /* Brief brightness flash */
+    1%, 3%, 5% { opacity: 0.95; }
+    2%, 4%, 6% { opacity: 1.05; }
+    10% { filter: brightness(1.1); }
     11% { filter: brightness(1); }
 }
 
-/* Re-enable pointer events for interactive elements within the HUD */
+
 .hud-overlay > div {
     pointer-events: auto;
 }
 
 .hud-section {
     position: absolute;
-    /* Hologram-style panel base styling */
-    background-color: rgba(0, 0, 0, var(--panel-bg-opacity)); /* More transparent background */
-    border: 1px solid rgba(0, 255, 255, var(--border-opacity)); /* Cyan border with transparency */
-    box-shadow: var(--glow-strength) var(--neon-cyan); /* Stronger cyan glow */
-    border-radius: 8px; /* Slightly rounded corners for a modern look */
+    background-color: rgba(0, 0, 0, var(--panel-bg-opacity));
+    border: 1px solid rgba(0, 255, 255, var(--border-opacity));
+    box-shadow: var(--glow-strength) var(--neon-cyan);
+    border-radius: 8px;
     padding: 15px 20px;
-    backdrop-filter: blur(4px) brightness(1.2); /* Stronger blur and brightness for depth */
-    transform: perspective(500px) rotateX(2deg) rotateY(-2deg); /* Subtle 3D tilt for panels */
-    transition: all 0.3s ease-out; /* Smooth transitions on hover */
-    overflow: hidden; /* Crucial for containing internal light trails */
+    backdrop-filter: blur(4px) brightness(1.2);
+    transform: perspective(500px) rotateX(2deg) rotateY(-2deg);
+    transition: all 0.3s ease-out;
+    overflow: hidden;
 
-    /* Synthetic light streak animation for panels */
     &::before {
         content: '';
         position: absolute;
@@ -47,16 +54,16 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent); /* Faint cyan streak */
-        transform: translateX(-100%); /* Start off-screen to the left */
-        animation: panelLightTrail 5s infinite linear; /* Continuous movement */
-        pointer-events: none; /* Ensure it doesn't block clicks */
+        background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        animation: panelLightTrail 5s infinite linear;
+        pointer-events: none;
     }
 }
 
 .hud-section:hover {
-    box-shadow: var(--glow-strength) var(--neon-magenta), inset var(--glow-strength) var(--neon-magenta); /* Magenta glow on hover */
-    transform: perspective(500px) rotateX(0deg) rotateY(0deg) scale(1.01); /* Straighten and slightly enlarge */
+    box-shadow: var(--glow-strength) var(--neon-magenta), inset var(--glow-strength) var(--neon-magenta);
+    transform: perspective(500px) rotateX(0deg) rotateY(0deg) scale(1.01);
 }
 
 @keyframes panelLightTrail {
@@ -64,35 +71,33 @@
     100% { transform: translateX(100%); }
 }
 
-/* Positioning for HUD sections */
 .hud-top-left { top: 30px; left: 30px; }
 .hud-top-right { top: 30px; right: 30px; text-align: right;}
-.hud-bottom-left { bottom: 30px; left: 30px; }
-.hud-bottom-right { bottom: 30px; right: 30px; text-align: right;}
+.hud-bottom-left { bottom: 30px; left: 30px; display: flex; align-items: center; gap: 15px; }
+.hud-bottom-right { bottom: 30px; right: 30px; text-align: right; display: flex; align-items: center; gap: 15px; }
 
 .hud-info {
     margin-bottom: 8px;
     font-size: 1.0em;
     text-transform: uppercase;
-    letter-spacing: 1px; /* Spaced out text for futuristic feel */
+    letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .hud-info .label {
-    color: rgba(0, 255, 255, 0.7); /* Slightly muted cyan for labels */
+    color: rgba(0, 255, 255, 0.7);
     margin-right: 8px;
 }
 .hud-info .value {
     font-weight: bold;
-    color: var(--neon-green); /* Status values in bright green */
+    color: var(--neon-green);
 }
-.status-ok { color: var(--neon-green); } /* Specific class for 'OK' status */
+.status-ok { color: var(--neon-green); }
 
-/* Button Styling */
 .hud-button {
-    background: linear-gradient(45deg, #007bff, #00e5ff); /* Cyan gradient as default */
+    background: linear-gradient(45deg, #007bff, #00e5ff);
     border: none;
     padding: 12px 18px;
-    margin: 8px;
     border-radius: 5px;
     cursor: pointer;
     color: white;
@@ -103,7 +108,10 @@
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 0.5px;
     position: relative;
-    overflow: hidden; /* For button glow effect */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .hud-button::before {
@@ -113,7 +121,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%); /* White radial glow */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     pointer-events: none;
@@ -121,7 +129,7 @@
 }
 .hud-button:hover::before {
     opacity: 1;
-    animation: buttonHoverGlow 0.5s forwards; /* Animation on hover */
+    animation: buttonHoverGlow 0.5s forwards;
 }
 
 @keyframes buttonHoverGlow {
@@ -130,86 +138,248 @@
 }
 
 .hud-button:hover {
-    background: linear-gradient(45deg, var(--neon-magenta), var(--neon-purple)); /* Magenta/Purple on hover */
+    background: linear-gradient(45deg, var(--neon-magenta), var(--neon-purple));
     box-shadow: var(--glow-strength) var(--neon-magenta), inset var(--glow-strength) var(--neon-magenta);
-    transform: translateY(-3px) scale(1.02); /* Lift and slightly enlarge */
+    transform: translateY(-3px) scale(1.02);
 }
 
 .hud-button.active {
-    background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan)); /* Green/Cyan for active state */
+    background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
     box-shadow: var(--glow-strength) var(--neon-green), inset var(--glow-strength) var(--neon-green);
-    transform: translateY(-1px); /* Slight lift for active */
+    transform: translateY(-1px);
 }
 
-/* Progress Bar Styling */
-.progress-bar-container {
-    width: 100%;
-    height: 8px; /* Thicker bar */
-    background-color: rgba(0, 255, 255, 0.1); /* Faint background for the bar */
-    margin-top: 15px;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: inset 0 0 5px rgba(0, 255, 255, 0.2); /* Inner shadow for depth */
+.hud-button-group {
     position: relative;
+    display: inline-block;
+    margin: 8px;
 }
 
-.progress-bar {
-    height: 100%;
-    background-color: var(--neon-cyan); /* Bright cyan fill */
-    transition: width 0.1s linear; /* Smooth progress update */
-    box-shadow: 0 0 8px var(--neon-cyan); /* Glow for the filled part */
-    position: relative;
+.hud-button .dropdown-icon {
+    margin-left: auto;
+    transition: transform 0.2s ease-in-out;
 }
 
-.progress-bar::after { /* Synthetic light trail on progress bar */
-    content: '';
+.hud-button.active .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.subtitle-language-dropdown-global {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 20px; /* Length of the trail */
-    height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3)); /* Fading white trail */
-    transform: skewX(-20deg); /* Skew for a dynamic look */
-    filter: blur(2px); /* Soft blur for the trail */
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(0, 255, 255, 0.7);
+    box-shadow: var(--glow-strength) rgba(0, 255, 255, 0.7);
+    border-radius: 5px;
+    padding: 5px 0;
+    min-width: 160px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeInScale 0.2s ease-out forwards;
+    pointer-events: auto;
 }
 
-/* Central elements - crosshair and dynamic readout */
+@keyframes fadeInScale {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.95); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+.hud-dropdown-item {
+    background: none;
+    border: none;
+    color: var(--neon-cyan);
+    padding: 10px 15px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s, color 0.2s, text-shadow 0.2s;
+
+    &:hover {
+        background-color: rgba(0, 255, 255, 0.2);
+        color: white;
+        text-shadow: var(--glow-strength) white;
+    }
+
+    &.selected {
+        background-color: rgba(0, 255, 255, 0.4);
+        color: var(--neon-green);
+        font-weight: bold;
+        text-shadow: var(--glow-strength) var(--neon-green);
+        position: relative;
+    }
+    
+    &.selected::after {
+        content: '\2713';
+        position: absolute;
+        right: 15px;
+        color: var(--neon-green);
+        font-size: 1.1em;
+    }
+}
+
+
+.hud-bottom-center {
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 60px);
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    &:hover {
+        transform: translateX(-50%);
+        box-shadow: var(--glow-strength) var(--neon-cyan);
+        border: 1px solid rgba(0, 255, 255, var(--border-opacity));
+    }
+}
+
+.hud-info.time-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    backdrop-filter: none;
+}
+
+.time-display .time-text {
+    font-size: 1.1em;
+    white-space: nowrap;
+    color: var(--neon-green);
+    text-shadow: var(--glow-strength) var(--neon-green);
+}
+
+.progress-slider {
+    -webkit-appearance: none;
+    flex-grow: 1;
+    height: 10px;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.2s;
+    box-shadow: inset 0 0 5px rgba(0, 255, 255, 0.2);
+    position: relative;
+    margin: 0 10px;
+}
+
+.progress-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--neon-cyan);
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--neon-cyan);
+    margin-top: -5px;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.progress-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--neon-cyan);
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--neon-cyan);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.progress-slider:hover::-webkit-slider-thumb,
+.progress-slider:active::-webkit-slider-thumb {
+    background: var(--neon-magenta);
+    box-shadow: 0 0 15px var(--neon-magenta);
+}
+
+.progress-slider:hover::-moz-range-thumb,
+.progress-slider:active::-moz-range-thumb {
+    background: var(--neon-magenta);
+    box-shadow: 0 0 15px var(--neon-magenta);
+}
+
+
+.quality-select {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 255, 255, 0.7);
+    color: var(--neon-cyan);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.5px;
+    box-shadow: var(--glow-strength) var(--neon-cyan);
+    transition: all 0.2s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="%2300E5FF" d="M9.293 12.95l.707.707 3.536-3.536-1.414-1.414L10 10.828 7.071 7.899 5.657 9.313 9.293 12.95z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 1em;
+    margin: 8px;
+}
+
+.quality-select option {
+    background-color: #000;
+    color: var(--neon-cyan);
+    padding: 5px 10px;
+}
+
+.quality-select:hover {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: var(--glow-strength) var(--neon-magenta);
+    border-color: rgba(255, 0, 255, 0.7);
+}
+
 .hud-center-elements {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 150px; /* Overall container size */
+    width: 150px;
     height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
-    pointer-events: none; /* Ensure elements below are clickable */
-    z-index: 12; /* Above other HUD elements */
+    pointer-events: none;
+    z-index: 12;
 }
 
 .hud-crosshair {
     position: relative;
     width: 80px;
     height: 80px;
-    border: 2px solid var(--neon-purple); /* Purple border */
+    border: 2px solid var(--neon-purple);
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--neon-purple), inset 0 0 10px var(--neon-purple); /* Purple glow */
-    animation: crosshairPulse 3s linear infinite alternate; /* Pulsing animation */
+    box-shadow: 0 0 15px var(--neon-purple), inset 0 0 10px var(--neon-purple);
+    animation: crosshairPulse 3s linear infinite alternate;
 }
 
 @keyframes crosshairPulse {
     0%, 100% { transform: scale(1); opacity: 0.9; }
-    50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 20px var(--neon-magenta), inset 0 0 15px var(--neon-magenta); } /* Brighter magenta pulse */
+    50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 20px var(--neon-magenta), inset 0 0 15px var(--neon-magenta); }
 }
 
 .hud-crosshair::before,
 .hud-crosshair::after {
     content: '';
     position: absolute;
-    background-color: var(--neon-magenta); /* Magenta cross lines */
+    background-color: var(--neon-magenta);
     box-shadow: 0 0 8px var(--neon-magenta);
-    animation: crosshairScan 2s linear infinite; /* Scanning animation */
+    animation: crosshairScan 2s linear infinite;
 }
 .hud-crosshair::before { width: 3px; height: 120%; left: 50%; transform: translateX(-50%) rotate(45deg); }
 .hud-crosshair::after { height: 3px; width: 120%; top: 50%; transform: translateY(-50%) rotate(45deg); }
@@ -220,7 +390,6 @@
     100% { opacity: 0.2; }
 }
 
-/* Dynamic central readout */
 .hud-central-readout {
     position: absolute;
     font-family: 'Share Tech Mono', monospace;
@@ -238,21 +407,19 @@
     50% { opacity: 0.8; }
 }
 
-/* More complex central dynamic elements (rotating rings) */
 .hud-center-elements::before, .hud-center-elements::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 1px dashed rgba(0, 255, 255, 0.2); /* Faint dashed rings */
+    border: 1px dashed rgba(0, 255, 255, 0.2);
     border-radius: 50%;
     animation: rotateInner 15s linear infinite;
 }
 .hud-center-elements::after {
-    animation: rotateOuter 20s linear reverse infinite; /* Rotate in opposite direction */
-    border-color: rgba(255, 0, 255, 0.2); /* Different color for outer ring */
+    animation: rotateOuter 20s linear reverse infinite;
+    border-color: rgba(255, 0, 255, 0.2);
 }
 
 @keyframes rotateInner { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
 @keyframes rotateOuter { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(-360deg); } }
-

@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Button, LinearProgress, Snackbar } from "@mui/material";
 import "./Download.scss";
 
+
+const toMovieId = (title) => title.toLowerCase().replace(/\s+/g, "-");
+
 function Download() {
   const navigate = useNavigate();
 
@@ -10,32 +13,32 @@ function Download() {
   const [downloadedMovies, setDownloadedMovies] = useState([
     {
       id: 1,
-      title: "ghost-in-the-shell",
+      title: "Ghost in the Shell",
       image: "/assets/ghost-in-the-shell.avif",
-      link: "/watch/ghost-in-the-shell",
+      link: `/video`,
       progress: 100,
     },
     {
       id: 2,
       title: "Attack on Titan",
       image: "/assets/thumb-1920-937234.jpg",
-      link: "/watch/attack-on-titan",
+      link: `/video`,
       progress: 100,
     },
   ]);
 
   const [currentDownload, setCurrentDownload] = useState({
     id: 3,
-    title: "war with aliens",
+    title: "War with Aliens",
     image: "/assets/war with aliens.webp",
     progress: 45,
-    link: "/watch/war with aliens",
+    link: `/video`,
   });
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
-  // Increment progress every 100ms if downloading
+ 
   useEffect(() => {
     if (isDownloading) {
       const interval = setInterval(() => {
@@ -43,7 +46,6 @@ function Download() {
           if (prev.progress < 100) {
             return { ...prev, progress: prev.progress + 1 };
           } else {
-            // Do not add movie here or stop interval here
             return prev;
           }
         });
@@ -53,7 +55,7 @@ function Download() {
     }
   }, [isDownloading]);
 
-  // When currentDownload progress reaches 100, add it to downloaded movies once
+ 
   useEffect(() => {
     if (currentDownload.progress >= 100 && isDownloading) {
       setIsDownloading(false);
@@ -64,7 +66,7 @@ function Download() {
       setSnackbarMessage(`${currentDownload.title} Download Completed!`);
       setSnackbarOpen(true);
     }
-  }, [currentDownload.progress, isDownloading, currentDownload]);
+  }, [currentDownload.progress, isDownloading]);
 
   const cancelDownload = () => {
     setIsDownloading(false);
@@ -118,7 +120,6 @@ function Download() {
                   variant="outlined"
                   color="error"
                   onClick={cancelDownload}
-                  className="action-button"
                 >
                   Cancel Download
                 </Button>
@@ -153,7 +154,6 @@ function Download() {
                         variant="contained"
                         color="primary"
                         onClick={() => navigate(movie.link)}
-                        className="action-button"
                       >
                         Watch Now
                       </Button>
@@ -161,7 +161,6 @@ function Download() {
                         variant="outlined"
                         color="error"
                         onClick={() => deleteMovie(movie.id)}
-                        className="action-button"
                       >
                         Delete
                       </Button>

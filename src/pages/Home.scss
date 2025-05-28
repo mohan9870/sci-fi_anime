@@ -3,17 +3,15 @@
   color: #fff;
   font-family: 'Orbitron', sans-serif;
   padding-bottom: 50px;
-  overflow-x: hidden; // Ensure no overall horizontal scroll due to body margin/padding
-
-  // --- Styles for the main hero slider (re-added/adjusted) ---
-  .hero-slider-section { // Renamed from .slider-section
+  overflow-x: hidden; 
+  .hero-slider-section { 
     position: relative;
     width: 100%;
-    height: 90vh; /* Full viewport height for the hero section */
+    height: 90vh; 
     overflow: hidden;
     display: flex;
-    align-items: center; // Vertically center content
-    justify-content: flex-start; // Align content to the start
+    align-items: center; 
+    justify-content: flex-start; 
 
     .slider-image {
       position: absolute;
@@ -22,107 +20,104 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.4); // Darken image for text readability
+      filter: brightness(0.4); 
       z-index: 0;
     }
 
     .slider-info {
-      position: relative; // Position relative to hero-slider-section
-      z-index: 1; // Ensure text is above the image
-      max-width: 50%; // Limit width of text for readability
-      margin-left: 5%; // Space from the left edge
+      position: relative; 
+      z-index: 1; 
+      max-width: 50%;
+      margin-left: 5%; 
       padding: 20px;
-      // text-shadow: 0 0 15px rgba(0, 249, 255, 0.7); // Subtle glow
-      // background: rgba(0, 0, 0, 0.3); // Optional: subtle background for text
-      // border-radius: 10px;
-
+     
       h2 {
-        font-size: 3.5rem; // Larger title
+        font-size: 3.5rem; 
         color: #00f9ff;
         margin-bottom: 1rem;
-        text-shadow: 0 0 15px #00f9ff; // Stronger glow
+        text-shadow: 0 0 15px #00f9ff; 
       }
 
       p {
-        font-size: 1.3rem; // Larger description
+        font-size: 1.3rem; 
         line-height: 1.6;
         margin-bottom: 2rem;
         max-width: 600px;
-        // text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+       
       }
 
       .button-group {
         display: flex;
-        gap: 1.5rem; // More space between buttons
+        gap: 1.5rem; 
 
         .watch-now-btn,
-        .add-wishlist-btn { // Apply general button styles
+        .add-wishlist-btn { 
           display: flex;
           align-items: center;
-          gap: 0.8rem; // More space between icon and text
-          padding: 0.8rem 2rem; // Larger padding for buttons
+          gap: 0.8rem; 
+          padding: 0.8rem 2rem; 
           border: none;
           border-radius: 30px;
-          font-size: 1.1rem; // Larger font size
-          font-weight: 700; // Bolder font
+          font-size: 1.1rem; 
+          font-weight: 700; 
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); // Subtle button shadow
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
           svg {
-            font-size: 1.4rem; // Larger icons
+            font-size: 1.4rem;
           }
         }
 
         .watch-now-btn {
           background: #00f9ff;
           color: #000;
-          box-shadow: 0 0 20px #00f9ff; // Stronger glow for primary button
+          box-shadow: 0 0 20px #00f9ff; 
 
           &:hover {
             background: #0ff;
-            transform: translateY(-2px); // Subtle lift
+            transform: translateY(-2px); 
             box-shadow: 0 0 30px #0ff;
           }
         }
 
         .add-wishlist-btn {
           background: transparent;
-          border: 2px solid #fff; // Thicker border
+          border: 2px solid #fff; 
           color: #fff;
 
           &:hover {
             border-color: #ff007a;
             color: #ff007a;
-            transform: translateY(-2px); // Subtle lift
-            background: rgba(255, 0, 122, 0.1); // Slight background on hover
+            transform: translateY(-2px);
+            background: rgba(255, 0, 122, 0.1); 
           }
         }
       }
     }
   }
 
-  .video-player-container { // Renamed from .video-player-container (in previous SCSS)
-    position: absolute; /* Occupy hero section space */
+  .video-player-container { 
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Take full height of parent */
+    height: 100%; 
     background-color: #000;
-    z-index: 5; // Ensure video is on top when playing
+    z-index: 5; 
 
-    .close-video-btn { // Renamed from .close-video
+    .close-video-btn { 
       position: absolute;
       top: 20px;
       right: 30px;
-      font-size: 1.8rem; // Larger close button
-      background: rgba(0, 0, 0, 0.5); // Background for visibility
+      font-size: 1.8rem; 
+      background: rgba(0, 0, 0, 0.5); 
       border: none;
-      border-radius: 50%; // Circular button
+      border-radius: 50%; 
       color: #fff;
       cursor: pointer;
       z-index: 10;
-      padding: 10px 15px; // Padding for circular shape
+      padding: 10px 15px; 
       display: flex;
       align-items: center;
       justify-content: center;
@@ -134,52 +129,51 @@
       }
     }
 
-    .video-player { // Renamed from .video-player
+    .video-player { 
       width: 100%;
       height: 100%;
-      object-fit: contain; // Use 'contain' to ensure video fits without cropping
-      background-color: #000; // Black background for letterboxing
+      object-fit: contain; 
+      background-color: #000; 
     }
   }
 
-  // --- Styles for the horizontally scrolling content rows (mostly unchanged) ---
+  
   .content-row-section {
-    padding: 2rem 0; // Padding top/bottom, no horizontal padding here as rows will scroll
-    margin-bottom: 20px; // Space between rows
+    padding: 2rem 0; 
+    margin-bottom: 20px;
     position: relative;
 
-    // The key changes are here:
+   
     .section-header {
-      display: flex; /* Enables Flexbox */
-      justify-content: space-between; /* Pushes children to opposite ends */
-      align-items: center; /* Vertically centers children */
+      justify-content: space-between; 
+      align-items: center; 
       margin-bottom: 1rem;
-      padding: 0 20px; /* Add horizontal padding to align with content */
+      padding: 0 20px; 
 
-      h2 { // Target the h2 inside .section-header
+      h2 { 
         font-size: 2rem;
         color: #00f9ff;
         text-shadow: 0 0 6px #00f9ff;
-        margin-bottom: 0; /* Remove bottom margin to align vertically */
-        padding-left: 0; /* Remove this as parent padding handles it now */
+        margin-bottom: 0; 
+        padding-left: 0; 
       }
 
       .view-all-btn {
-        background-color: #00f9ff; /* Cyberpunk blue */
+        background-color: #00f9ff; 
         color: #000;
         border: none;
         padding: 0.7rem 1.5rem;
-        border-radius: 30px; /* Rounded corners */
+        border-radius: 30px; 
         cursor: pointer;
         font-size: 1rem;
         font-weight: 600;
         transition: all 0.3s ease;
-        box-shadow: 0 0 10px #00f9ff; /* Blue glow */
+        box-shadow: 0 0 10px #00f9ff; 
 
         &:hover {
           background-color: #0ff;
-          transform: translateY(-2px); /* Subtle lift */
-          box-shadow: 0 0 20px #0ff; /* Enhanced glow on hover */
+          transform: translateY(-2px); 
+          box-shadow: 0 0 20px #0ff; 
         }
       }
     }
@@ -187,18 +181,18 @@
 
   .content-row-items {
     display: flex;
-    overflow-x: auto; // Enable horizontal scrolling
-    padding: 0 20px; // Padding on the sides for scrollable content
-    gap: 15px; // Space between items
+    overflow-x: auto; 
+    padding: 0 20px; 
+    gap: 15px; 
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
 
-    // Hide scrollbar but keep functionality
+   
     &::-webkit-scrollbar {
       display: none;
     }
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
   }
 
   .content-row-item {
@@ -214,7 +208,7 @@
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(0, 249, 255, 0.5); // Add a glow on hover
+      box-shadow: 0 0 15px rgba(0, 249, 255, 0.5); 
     }
 
     img {
@@ -238,7 +232,7 @@
   }
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .hero-slider-section {
     height: 60vh;
@@ -267,16 +261,16 @@
   .content-row-section {
     padding: 0 1rem;
     .section-header {
-      flex-direction: column; /* Stack heading and button on smaller screens */
+      flex-direction: column; 
       align-items: flex-start;
       margin-bottom: 1rem;
-      padding: 0; /* Remove horizontal padding here */
+      padding: 0;
       h2 {
         margin-bottom: 0.5rem;
       }
     }
     .content-row-items {
-      padding: 0 1rem; /* Adjust padding for items */
+      padding: 0 1rem;
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
       .content-row-item {
         img {

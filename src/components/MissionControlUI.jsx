@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Howl } from 'howler';
 import './MissionControlUI.scss';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'; // Ensure FaArrowLeft is imported
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'; 
 
-// Mission data
+
 const missions = [
   {
     id: 1,
     title: "Operation: Chrono-Trigger",
-    status: "unlocked", // Can be 'locked', 'unlocked', 'completed'
-    type: "expedition", // Corresponds to "Mission Nodes"
+    status: "unlocked",
+    type: "expedition", 
     videoUrl: "/videos/episode1.mp4",
-    tag: "Temporal Anomaly", // Critical tag
+    tag: "Temporal Anomaly", 
     description: "Initiate temporal distortion sequence. Navigate the fractured realities to retrieve lost data fragments.",
     upgrades: ["Neural Link Activated", "AI Sync 20%"],
     sectors: 5,
@@ -22,9 +22,9 @@ const missions = [
     id: 2,
     title: "Expedition: Echo Nexus",
     status: "unlocked",
-    type: "mission", // Another type for differentiation
+    type: "mission", 
     videoUrl: "/videos/episode2.mp4",
-    tag: "System Breach", // Critical tag
+    tag: "System Breach", 
     description: "Infiltrate the compromised Echo Nexus. Secure critical AI core data before system collapse.",
     upgrades: ["AI Sync 42%", "Time Modulator Engaged"],
     sectors: 7,
@@ -68,7 +68,7 @@ const missions = [
   }
 ];
 
-// Load sounds for types and specific tags
+
 const sounds = {
   'Temporal Anomaly': new Howl({ src: ['/sounds/temporal_shift.mp3.wav'], volume: 0.7, preload: true }),
   'System Breach': new Howl({ src: ['/sounds/system_breach.mp3.wav'], volume: 0.8, preload: true }),
@@ -134,12 +134,12 @@ const MissionControlUI = () => {
         <span className="glitch" data-text="MISSION CONTROL">MISSION CONTROL</span>
       </h1>
 
-      {/* Left Arrow Button positioned at the top left */}
+     
       <button
         style={{
           position: 'fixed',
           top: '20px',
-          left: '20px', // Positioned on the left
+          left: '20px',
           marginTop:'48px',
           backgroundColor: 'transparent',
           border: 'none',
@@ -148,13 +148,13 @@ const MissionControlUI = () => {
           fontSize: '2em',
           zIndex: 1000,
         }}
-        onClick={() => navigate('/mylist')} // Navigates to /mylist
+        onClick={() => navigate('/mylist')} 
         aria-label="Go to My List page"
       >
         <FaArrowLeft />
       </button>
 
-      {/* Right Arrow Button positioned at the top right */}
+      
       <button
         style={{
           position: 'fixed',

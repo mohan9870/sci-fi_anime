@@ -1,4 +1,4 @@
-/* Container styling */
+
 .otp-container {
   max-width: 400px;
   margin: 50px auto;
@@ -6,13 +6,13 @@
   border: 1px solid #0ff;
   border-radius: 12px;
   box-shadow: 0 0 15px #00ffff44;
-  background: #000; /* dark background for contrast */
-  color: #0ff; /* neon cyan text color */
+  background: #000;
+  color: #0ff; 
   font-family: 'Orbitron', sans-serif;
   text-align: center;
 }
 
-/* Neon glitch effect for heading */
+
 .glitch {
   font-size: 2.5rem;
   position: relative;
@@ -75,7 +75,7 @@
   }
 }
 
-/* OTP form styling */
+
 .otp-form {
   display: flex;
   flex-direction: column;
@@ -83,13 +83,13 @@
   margin-top: 30px;
 }
 
-/* Input with neon effect, black text */
+
 .input-neon {
   padding: 15px;
   border-radius: 10px;
   border: none;
   background: rgba(0, 255, 255, 0.1);
-  color: #000; /* black text for input */
+  color: #000; 
   font-size: 1.2rem;
   outline: none;
   box-shadow: 0 0 10px cyan;
@@ -105,8 +105,8 @@
   padding: 15px;
   border-radius: 10px;
   border: none;
-  background:whitesmoke; /* black/dark background */
-  color: #00ffff;   /* neon cyan text */
+  background:whitesmoke; 
+  color: #00ffff;
   font-size: 1.2rem;
   outline: none;
   box-shadow: 0 0 10px #00ffff;

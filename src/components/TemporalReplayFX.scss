@@ -4,17 +4,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 20; /* Position above video and HUD */
-    /* Desaturation, brightness, and contrast for a "temporal" look */
+    z-index: 20; 
+   
     filter: grayscale(100%) saturate(200%) brightness(70%) contrast(120%);
-    animation: temporalGlitch 0.3s ease-in-out infinite alternate; /* Subtle, continuous glitch */
-    pointer-events: none; /* Make it a visual-only effect */
-    /* Add a subtle grid pattern for a digital feel */
+    animation: temporalGlitch 0.3s ease-in-out infinite alternate; 
+    pointer-events: none; 
     background-image:
         linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 10px 10px; /* Small grid size */
-    box-shadow: inset 0 0 20px rgba(255, 0, 255, 0.2); /* Subtle inner glow */
+    background-size: 10px 10px;
+    box-shadow: inset 0 0 20px rgba(255, 0, 255, 0.2);
 }
 
 @keyframes temporalGlitch {
@@ -27,13 +26,13 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    /* Repeating linear gradient for scanline-like distortion */
+    
     background: repeating-linear-gradient(
         transparent,
-        rgba(255, 0, 255, 0.1) 1px, /* Magenta glitch lines */
+        rgba(255, 0, 255, 0.1) 1px, 
         transparent 5px
     );
-    animation: subtleDistortion 1s linear infinite alternate; /* Faster, more noticeable distortion */
+    animation: subtleDistortion 1s linear infinite alternate; 
 }
 
 @keyframes subtleDistortion {
@@ -45,20 +44,18 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0.15; /* Adjust as needed */
-    pointer-events: none; /* Make it unclickable */
-    /* --- CSS-only grain effect --- */
+    opacity: 0.15; 
+    pointer-events: none;
     background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-    background-size: 2px 2px; /* Controls density of "grain" */
-    animation: grainAnimation 0.1s steps(1) infinite; /* Fast flicker */
-    /* --- End CSS-only grain effect --- */
-    z-index: 20; /* Ensure it's on top of video/HUD */
+    background-size: 2px 2px; 
+    animation: grainAnimation 0.1s steps(1) infinite; 
+    z-index: 20; 
 }
 
 @keyframes grainAnimation {
     0% { background-position: 0 0; }
-    100% { background-position: 2px 2px; } /* Shifts by grain size */
+    100% { background-position: 2px 2px; } 
 }
 
 @keyframes grainAnimation {
@@ -72,10 +69,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 3em;
-    color: var(--neon-magenta); /* Magenta for slow-mo text */
+    color: var(--neon-magenta); 
     text-shadow: 0 0 15px var(--neon-magenta), 0 0 30px rgba(255, 0, 255, 0.5);
     opacity: 0.8;
-    animation: textFlicker 0.2s steps(1) infinite; /* Fast text flicker */
+    animation: textFlicker 0.2s steps(1) infinite; 
 }
 
 @keyframes textFlicker {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa'; // Import FaArrowLeft
+import { FaArrowLeft } from 'react-icons/fa'; 
 import './SubscriptionPlans.scss';
 
 const plans = [
@@ -44,7 +44,7 @@ const SubscriptionPlans = () => {
 
   return (
     <div className="subscription-page">
-      {/* Add the back button here */}
+     
       <button className="back-button" onClick={() => navigate('/home')}>
         <FaArrowLeft />
       </button>

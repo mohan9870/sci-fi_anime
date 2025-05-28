@@ -4,47 +4,45 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Position behind everything else (video, HUD, FX) */
+    z-index: 1; 
     overflow: hidden;
 }
 
-/* Starscape Background Styling */
 .starscape-bg {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at top left, #050510 0%, #000000 100%); /* Deep space gradient */
-    opacity: 0; /* Hidden by default */
-    transition: opacity 1s ease-in-out; /* Smooth fade transition */
-    /* A very basic SVG for stars, repeated to create a starfield */
+    background: radial-gradient(circle at top left, #050510 0%, #000000 100%);
+    opacity: 0; 
+    transition: opacity 1s ease-in-out; 
     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxmaWx0ZXIgZHg9IjAuMDc1IiBkeT0iMC4wNzUiIGlkPSJhIj48ZmVPZmZzZXQgcmVzdWx1dD0iYiIvPjxmR2F1c3NpYW5CbHVyIGluPSJiIiBzdGREZXZpYXRpb249IjcuNDMiLz48ZmVBbmJpZW50TGlnaHRpbmdsaWdodGluZ0Nvlorc9Y2ZtX0Z0PjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDAwMDAwIi8+PGNpcmNsZSBjeD0iMTUlIiBjeT0iMTUlIiByPSI1JSIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjgwJSIgY3k9IjIwJSIgcj0iMyUiIGZpbGw9IiNmZmZmZmYiLz48Y2lyY2xlIGN4PSIzMCUiIGN5PSI0MCUiIHJvP3pLbiBjcj0iMSUiIGZpbGw9IiNmZmZmZmYiLz48Y2lyY2xlIGN4PSI2NSUiIGN5PSI3MCUiIHI9IjQlIiBmaWxsPSIjZmZmZmZmIi8+PGNpcmNsZSBjeD0iNzAlIiBjeT0iOTAlIiByPSIyJSIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjQwJSIgY3k9IjkwJSIgcj0iNiUiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=');
-    background-size: 200px 200px; /* Adjust size for star density */
-    animation: moveStars 120s linear infinite; /* Slow, drifting stars animation */
+    background-size: 200px 200px; 
+    animation: moveStars 120s linear infinite; 
 }
-.starscape-bg.active { opacity: 1; } /* Make visible when active */
+.starscape-bg.active { opacity: 1; } 
 
 @keyframes moveStars {
     from { background-position: 0 0; }
-    to { background-position: -2000px -2000px; } /* Moves the background to simulate motion */
+    to { background-position: -2000px -2000px; } 
 }
 
-/* Neural Grid Background Styling */
+
 .neural-grid-bg {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #000; /* Solid black background for grid */
-    opacity: 0; /* Hidden by default */
-    transition: opacity 1s ease-in-out; /* Smooth fade transition */
+    background: #000; 
+    opacity: 0; 
+    transition: opacity 1s ease-in-out;
     background-image:
-        repeating-linear-gradient(0deg, var(--neon-green) 0, transparent 1px, transparent 100px), /* Horizontal lines */
-        repeating-linear-gradient(90deg, var(--neon-green) 0, transparent 1px, transparent 100px); /* Vertical lines */
-    background-size: 100px 100px; /* Grid cell size */
-    animation: scanGrid 10s linear infinite; /* Dynamic grid scan animation */
+        repeating-linear-gradient(0deg, var(--neon-green) 0, transparent 1px, transparent 100px), 
+        repeating-linear-gradient(90deg, var(--neon-green) 0, transparent 1px, transparent 100px); 
+    background-size: 100px 100px; 
+    animation: scanGrid 10s linear infinite; 
 }
-.neural-grid-bg.active { opacity: 0.5; /* Slightly transparent when active */ }
+.neural-grid-bg.active { opacity: 0.5;  }
 
 @keyframes scanGrid {
     0% { background-position: 0 0; }
-    100% { background-position: 100px 100px; } /* Moves the grid pattern */
+    100% { background-position: 100px 100px; }
 }

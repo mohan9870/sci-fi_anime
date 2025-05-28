@@ -1,11 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Distopian.scss'; // Assuming your SCSS file is here
+import './Distopian.scss';
 
 const dystopianTitles = [
-  // IMPORTANT: Added unique 'id' for each movie.
-  // These 'id's should ideally match the keys in your `allVideoSources` object
-  // within your VideoPlayer.js component.
+  
   { id: 'children-of-men', name: 'Children of Men', image: '/assets/sfic17.jpg' },
   { id: 'the-hunger-games', name: 'The Hunger Games', image: '/assets/sfic18.jpg' },
   { id: 'snowpiercer', name: 'Snowpiercer', image: '/assets/sfic19.jpg' },
@@ -19,9 +17,9 @@ const dystopianTitles = [
 const Distopian = () => {
   const navigate = useNavigate();
 
-  // Function to handle image click and navigate to YOUR internal video page
+ 
   const handleImageClick = (movieId) => {
-    // Navigate to '/video' and pass the movieId in the 'state' object
+
     navigate('/video', { state: { movieId: movieId } });
   };
 
@@ -46,12 +44,12 @@ const Distopian = () => {
       <div className="distopian-grid">
         {dystopianTitles.map((item, index) => (
           <div
-            key={item.id} // Use item.id as the key for better React performance
+            key={item.id} 
             className="distopian-card"
-            onClick={() => handleImageClick(item.id)} // <--- KEY CHANGE: Call handleImageClick with item.id
+            onClick={() => handleImageClick(item.id)} 
             tabIndex={0}
             role="button"
-            aria-label={`Watch ${item.name} video`} // Updated aria-label
+            aria-label={`Watch ${item.name} video`}
           >
             <img src={item.image} alt={item.name} className="distopian-image" />
             <div className="distopian-overlay">

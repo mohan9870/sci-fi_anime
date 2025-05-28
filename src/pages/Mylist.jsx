@@ -10,7 +10,7 @@ const MyList = () => {
 
   return (
     <div className="mylist-container">
-      {/* Title bar with nav buttons */}
+     
       <div className="mylist-header">
         <button className="nav-button left" onClick={() => navigate('/home')}>
           <FaArrowLeft />

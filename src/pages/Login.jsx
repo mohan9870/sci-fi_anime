@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link, useNavigate } from 'react-router-dom'; 
 import './Login.scss';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
   const socialLinks = {
     facebook: 'https://www.facebook.com/login/',
@@ -17,21 +17,18 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // In a real application, you would send the email and password to a backend
-    // for authentication here.
-    // For this example, we'll just simulate a successful login and navigate.
+   
 
     console.log(`Attempting login with email: ${email} and password: ${password}`);
 
-    // --- SIMULATED LOGIN SUCCESS ---
-    // If login details are 'correct' (for this example, just if fields are not empty)
+    
     if (email && password) {
       alert(`Login successful for email: ${email}. Redirecting to home.`);
-      navigate('/home'); // Navigate to the home page
+      navigate('/home'); 
     } else {
       alert('Please enter both email and password.');
     }
-    // --- END SIMULATED LOGIN ---
+    
   };
 
   return (
@@ -61,7 +58,7 @@ function Login() {
         <button type="submit" className="btn-neon">Sign In</button>
       </form>
 
-      {/* Forgot Password Link */}
+     
       <div className="forgot-password-link">
         <Link to="/forgot-password">Forgot Password?</Link>
       </div>

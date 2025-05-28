@@ -1,11 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import './Topmovies.scss'; // Create this SCSS file
+import { useNavigate } from 'react-router-dom'; 
+import './Topmovies.scss'; 
 
 const TopMovies = ({ sections }) => {
-  const navigate = useNavigate(); // Initialize useNavigate
-
-  // If no sections passed, use default data internally for Top Movies
+  const navigate = useNavigate(); 
   const topMoviesSections = sections && Array.isArray(sections)
     ? sections
     : [
@@ -42,16 +40,16 @@ const TopMovies = ({ sections }) => {
 
   return (
     <div className="top-movies-container">
-      <header className="top-movies-header"> {/* Added a header for the button and heading */}
+      <header className="top-movies-header"> 
         <button onClick={() => navigate('/home')} className="back-button">
-          &larr; {/* Back arrow */}
+          &larr;
         </button>
-        {/* The heading is now inside the header */}
+     
         <h2 className="section-heading">{topMoviesSections[0]?.heading || 'Top Movies'}</h2>
       </header>
       {topMoviesSections.map((section) => (
         <section key={section.heading} className="top-movies-section">
-          {/* The h2 element that was here is now moved into the header */}
+        
           <div className="top-movies-grid">
             {section.items?.map((item) => (
               <div key={item.id} className="top-movie-card">

@@ -16,7 +16,7 @@ const AccountSettings = () => {
   const [isChangingImage, setIsChangingImage] = useState(false);
   const [message, setMessage] = useState({ text: "", type: "" });
 
-  // Load profile image from localStorage if available
+ 
   useEffect(() => {
     const savedImage = localStorage.getItem("profileImage");
     if (savedImage) {
@@ -64,7 +64,7 @@ const AccountSettings = () => {
       return;
     }
 
-    // Simulate API call
+    
     setTimeout(() => {
       setMessage({ text: "Password changed successfully", type: "success" });
       setCurrentPassword("");
@@ -100,7 +100,7 @@ const AccountSettings = () => {
         )}
 
         <div className="settings-card">
-          {/* Profile Picture Section */}
+        
           <div className="settings-item">
             <div className="settings-icon">
               <FaUser size={20} />
@@ -164,7 +164,7 @@ const AccountSettings = () => {
             </div>
           </div>
 
-          {/* Email Section (Read-only) */}
+         
           <div className="settings-item">
             <div className="settings-icon">
               <FaUser size={20} />
@@ -180,7 +180,7 @@ const AccountSettings = () => {
             </div>
           </div>
 
-          {/* Password Section */}
+         
           <div className="settings-item">
             <div className="settings-icon">
               <FaLock size={20} />

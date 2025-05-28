@@ -1,6 +1,4 @@
-// Profile.scss - Refined & Beautiful Version
 
-// Colors
 $gradient-start: #6a11cb;
 $gradient-end: #2575fc;
 $accent-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
@@ -13,7 +11,7 @@ $shadow-dark: rgba(0, 0, 0, 0.15);
 $border-radius: 12px;
 $transition-time: 0.4s;
 
-// Fonts
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 body {
@@ -239,7 +237,7 @@ body {
   }
 }
 
-// Modal Styles
+
 
 .profile-modal-overlay {
   position: fixed;
@@ -368,7 +366,7 @@ body {
   }
 }
 
-// Responsive
+
 
 @media (max-width: 650px) {
   .profile-page {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Howl } from 'howler';
 import './TimelineVisualization.scss';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'; // Import FaArrowLeft
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'; 
 
 const episodes = [
   {
@@ -76,7 +76,7 @@ const TimelinePlayer = () => {
     <div className="timeline-container">
       <h2 className="timeline-title">🧬 Tech Timeline: Evolution Nodes</h2>
 
-      {/* Right Arrow Button positioned at the top right */}
+     
       <button
         style={{
           position: 'fixed',
@@ -96,12 +96,12 @@ const TimelinePlayer = () => {
         <FaArrowRight />
       </button>
 
-      {/* Left Arrow Button positioned at the top left */}
+     
       <button
         style={{
           position: 'fixed',
           top: '20px',
-          left: '20px', // Positioned on the left
+          left: '20px', 
           marginTop:'48px',
           backgroundColor: 'transparent',
           border: 'none',

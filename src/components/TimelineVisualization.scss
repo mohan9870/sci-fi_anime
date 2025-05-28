@@ -1,10 +1,9 @@
-// Import a techy font if you have one, or use a system equivalent
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-$primary-color: #00ff00; // Neon Green
-$secondary-color: #00aaff; // Cyber Blue
-$tertiary-color: #ff00ff; // Magenta
-$accent-color: #ffaa00; // Orange
+$primary-color: #00ff00;
+$secondary-color: #00aaff;
+$tertiary-color: #ff00ff;
+$accent-color: #ffaa00;
 
 @keyframes dataStreamPulse {
   0% { background-position: 0% 50%; }
@@ -12,8 +11,8 @@ $accent-color: #ffaa00; // Orange
 }
 
 @keyframes nodeGlow {
-  0%, 100% { box-shadow: 0 0 3px $primary-color, 0 0 8px rgba(0, 255, 0, 0.3); } /* Reduced */
-  50% { box-shadow: 0 0 6px $primary-color, 0 0 15px rgba(0, 255, 0, 0.5); } /* Reduced */
+  0%, 100% { box-shadow: 0 0 3px $primary-color, 0 0 8px rgba(0, 255, 0, 0.3); }
+  50% { box-shadow: 0 0 6px $primary-color, 0 0 15px rgba(0, 255, 0, 0.5); }
 }
 
 @keyframes spikeAnimation {
@@ -27,18 +26,18 @@ $accent-color: #ffaa00; // Orange
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  background: #0a0a0a; // Very dark background
+  background: #0a0a0a;
   color: $primary-color;
   font-family: 'Share Tech Mono', monospace;
   min-height: 100vh;
   box-sizing: border-box;
-  overflow: hidden; // Prevent horizontal scroll from overflow
+  overflow: hidden;
 }
 
 .timeline-title {
   font-size: 3em;
   margin-bottom: 60px;
-  text-shadow: 0 0 10px $primary-color, 0 0 20px rgba(0, 255, 0, 0.6); /* Reduced */
+  text-shadow: 0 0 10px $primary-color, 0 0 20px rgba(0, 255, 0, 0.6);
   letter-spacing: 3px;
   text-align: center;
   position: relative;
@@ -49,19 +48,19 @@ $accent-color: #ffaa00; // Orange
     height: 3px;
     background: linear-gradient(to right, transparent, $primary-color, transparent);
     margin: 15px auto 0;
-    box-shadow: 0 0 8px $primary-color; /* Reduced */
+    box-shadow: 0 0 8px $primary-color;
   }
 }
 
 .timeline-genetic-strand-wrapper {
   position: relative;
-  width: 95%; // Make it wider to resemble a strand
+  width: 95%;
   margin-bottom: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 150px; // Provide vertical space for nodes to sit above/below
-  padding: 0 20px; // Padding to ensure nodes don't touch edges
+  min-height: 150px;
+  padding: 0 20px;
 }
 
 .episode-nodes-container {
@@ -81,18 +80,17 @@ $accent-color: #ffaa00; // Orange
   align-items: center;
   cursor: pointer;
   padding: 10px 5px;
-  border-radius: 12px; // More rounded for organic feel
+  border-radius: 12px;
   transition: all 0.4s ease-in-out;
   position: relative;
   flex-shrink: 0;
-  width: 140px; // Wider for more content
-  margin: 0 10px; // Spacing between nodes
+  width: 140px;
+  margin: 0 10px;
 
-  // Positioning nodes above and below the central strand
-  &:nth-child(even) { // Even nodes below
+  &:nth-child(even) {
     transform: translateY(20px) rotateX(5deg);
   }
-  &:nth-child(odd) { // Odd nodes above
+  &:nth-child(odd) {
     transform: translateY(-20px) rotateX(-5deg);
   }
 
@@ -105,15 +103,15 @@ $accent-color: #ffaa00; // Orange
     margin-bottom: 12px;
     position: relative;
     z-index: 3;
-    animation: nodeGlow 2s infinite alternate; // Subtle glow
+    animation: nodeGlow 2s infinite alternate;
   }
 
   .node-title {
     font-size: 1em;
     text-align: center;
     margin-top: 5px;
-    color: #e0ffe0; // Lighter green for text
-    text-shadow: 0 0 3px rgba(0, 255, 0, 0.4); /* Reduced */
+    color: #e0ffe0;
+    text-shadow: 0 0 3px rgba(0, 255, 0, 0.4);
   }
 
   .tag {
@@ -124,10 +122,9 @@ $accent-color: #ffaa00; // Orange
     background-color: rgba(0, 200, 0, 0.15);
     color: $primary-color;
     border: 1px solid $primary-color;
-    text-shadow: 0 0 2px $primary-color; /* Reduced */
+    text-shadow: 0 0 2px $primary-color;
   }
 
-  // Type-specific styling (Memory Nodes, Upgrades, Key Moments)
   &.memory {
     .node-icon { background-color: $secondary-color; border-color: rgba($secondary-color, 0.7); animation: nodeGlow 2.5s infinite alternate; }
     background-color: rgba($secondary-color, 0.08);
@@ -142,29 +139,27 @@ $accent-color: #ffaa00; // Orange
     .node-icon { background-color: $tertiary-color; border-color: rgba($tertiary-color, 0.7); animation: nodeGlow 3s infinite alternate; }
     background-color: rgba($tertiary-color, 0.08);
     border: 1px solid rgba($tertiary-color, 0.5);
-    // Temporal Spike / Galactic Event visual for "moment" type
     &::before {
       content: '';
       position: absolute;
-      bottom: -30px; // Position below the node
+      bottom: -30px;
       width: 2px;
       height: 20px;
       background: $tertiary-color;
-      box-shadow: 0 0 8px $tertiary-color, 0 0 15px rgba($tertiary-color, 0.6); /* Reduced */
+      box-shadow: 0 0 8px $tertiary-color, 0 0 15px rgba($tertiary-color, 0.6);
       animation: spikeAnimation 1.5s infinite alternate;
       transform-origin: bottom;
     }
   }
 
-  // Tag-specific styling for critical episodes
   &.tag-temporal-shift {
-    border-color: #ff4500; // Orange-red for instability
-    box-shadow: 0 0 10px rgba(#ff4500, 0.4); /* Reduced */
+    border-color: #ff4500;
+    box-shadow: 0 0 10px rgba(#ff4500, 0.4);
     .node-icon {
       background-color: #ff4500;
       border-color: #ff6347;
-      animation: nodeGlow 1s infinite alternate; // Faster glow for critical
-      &::after { // "Glitch" effect
+      animation: nodeGlow 1s infinite alternate;
+      &::after {
         content: '';
         position: absolute;
         top: 2px; left: -2px;
@@ -177,33 +172,33 @@ $accent-color: #ffaa00; // Orange
   }
 
   &.tag-system-breach {
-    border-color: #ff0000; // Red for breach
-    box-shadow: 0 0 10px rgba(#ff0000, 0.5); /* Reduced */
+    border-color: #ff0000;
+    box-shadow: 0 0 10px rgba(#ff0000, 0.5);
     .node-icon {
       background-color: #ff0000;
       border-color: #ff3333;
-      animation: nodeGlow 0.8s infinite alternate; // Even faster glow
-      &::after { // "Spark" effect
+      animation: nodeGlow 0.8s infinite alternate;
+      &::after {
         content: '';
         position: absolute;
         top: 50%; left: 50%;
         width: 4px; height: 4px;
         background: #fff;
         border-radius: 50%;
-        box-shadow: 0 0 8px #fff; /* Reduced */
+        box-shadow: 0 0 8px #fff;
         animation: sparkBurst 0.5s infinite alternate;
       }
     }
   }
 
   &.tag-galactic-event {
-    border-color: #8a2be2; // Blue Violet for cosmic
-    box-shadow: 0 0 10px rgba(#8a2be2, 0.5); /* Reduced */
+    border-color: #8a2be2;
+    box-shadow: 0 0 10px rgba(#8a2be2, 0.5);
     .node-icon {
       background-color: #8a2be2;
       border-color: #9370db;
       animation: nodeGlow 2.5s infinite alternate;
-      &::after { // "Galaxy" swirl
+      &::after {
         content: '';
         position: absolute;
         top: 0; left: 0;
@@ -216,13 +211,13 @@ $accent-color: #ffaa00; // Orange
   }
 
   &.tag-time-alteration {
-    border-color: #ffff00; // Yellow for time effects
-    box-shadow: 0 0 10px rgba(#ffff00, 0.5); /* Reduced */
+    border-color: #ffff00;
+    box-shadow: 0 0 10px rgba(#ffff00, 0.5);
     .node-icon {
       background-color: #ffff00;
       border-color: #fafa00;
       animation: nodeGlow 1.2s infinite alternate;
-      &::after { // "Warp" effect
+      &::after {
         content: '';
         position: absolute;
         top: 0; left: 0;
@@ -236,22 +231,22 @@ $accent-color: #ffaa00; // Orange
   }
 
   &:hover {
-    transform: scale(1.1) rotateX(0deg); // Bring to front and flatten slightly
-    background-color: rgba($primary-color, 0.1); /* Slightly less opaque */
-    box-shadow: 0 0 15px rgba($primary-color, 0.5); /* Reduced */
-    z-index: 4; // Ensure hover is on top
+    transform: scale(1.1) rotateX(0deg);
+    background-color: rgba($primary-color, 0.1);
+    box-shadow: 0 0 15px rgba($primary-color, 0.5);
+    z-index: 4;
   }
 
   &.active {
-    background-color: rgba($primary-color, 0.2); /* Slightly less opaque */
+    background-color: rgba($primary-color, 0.2);
     border: 2px solid $primary-color;
-    box-shadow: 0 0 20px $primary-color, 0 0 30px rgba(0, 255, 0, 0.7); /* Reduced */
-    transform: scale(1.15) rotateX(0deg); // Slightly larger and flat when active
+    box-shadow: 0 0 20px $primary-color, 0 0 30px rgba(0, 255, 0, 0.7);
+    transform: scale(1.15) rotateX(0deg);
     z-index: 5;
     .node-icon {
       border-color: #fff;
-      box-shadow: 0 0 15px #fff; /* Reduced */
-      animation: none; // Stop glowing animation when active
+      box-shadow: 0 0 15px #fff;
+      animation: none;
       background-color: #fff;
     }
   }
@@ -259,22 +254,22 @@ $accent-color: #ffaa00; // Orange
 
 .video-panel {
   margin-top: 60px;
-  background: linear-gradient(45deg, rgba(0, 20, 0, 0.5), rgba(0, 50, 0, 0.7)); /* Slightly less opaque */
+  background: linear-gradient(45deg, rgba(0, 20, 0, 0.5), rgba(0, 50, 0, 0.7));
   border: 2px solid $primary-color;
   border-radius: 15px;
   padding: 40px;
   width: 80%;
   max-width: 900px;
   text-align: center;
-  box-shadow: 0 0 25px rgba(0, 255, 0, 0.6); /* Reduced */
-  backdrop-filter: blur(5px); // Frosted glass effect
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
+  backdrop-filter: blur(5px);
   animation: panelAppear 0.5s ease-out;
 
   h3 {
     font-size: 2.2em;
     color: $secondary-color;
     margin-bottom: 20px;
-    text-shadow: 0 0 8px $secondary-color; /* Reduced */
+    text-shadow: 0 0 8px $secondary-color;
     letter-spacing: 1px;
   }
 
@@ -283,7 +278,7 @@ $accent-color: #ffaa00; // Orange
     line-height: 1.7;
     margin-bottom: 30px;
     color: #ccffcc;
-    text-shadow: 0 0 1px rgba(0, 255, 0, 0.2); /* Reduced */
+    text-shadow: 0 0 1px rgba(0, 255, 0, 0.2);
   }
 
   .upgrades {
@@ -302,7 +297,7 @@ $accent-color: #ffaa00; // Orange
       border-radius: 8px;
       color: $accent-color;
       font-size: 1em;
-      text-shadow: 0 0 3px $accent-color; /* Reduced */
+      text-shadow: 0 0 3px $accent-color;
       transition: transform 0.2s ease-in-out;
       &:hover {
         transform: translateY(-3px);
@@ -316,7 +311,7 @@ $accent-color: #ffaa00; // Orange
     max-width: 700px;
     border-radius: 12px;
     border: 3px solid $primary-color;
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7), 0 0 25px rgba(0, 255, 0, 0.4); /* Reduced */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7), 0 0 25px rgba(0, 255, 0, 0.4);
     transition: transform 0.3s ease-in-out;
     &:hover {
       transform: scale(1.01);

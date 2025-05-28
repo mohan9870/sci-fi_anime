@@ -3,25 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import './Space.scss';
 
 const spaceTitles = [
-  // IMPORTANT: Added unique 'id' for each movie.
-  // These 'id's should ideally match the keys in your `allVideoSources` object
-  // within your VideoPlayer.js component.
-  { id: 'interstellar-space', name: 'Interstellar', image: '/assets/sfic10.jpg' }, // Renamed to avoid ID collision
+  
+  { id: 'interstellar-space', name: 'Interstellar', image: '/assets/sfic10.jpg' }, 
   { id: '2001-a-space-odyssey', name: '2001: A Space Odyssey', image: '/assets/sfic23.jpg' },
-  { id: 'gravity-space', name: 'Gravity', image: '/assets/sfic35.jpg' }, // Renamed to avoid ID collision
+  { id: 'gravity-space', name: 'Gravity', image: '/assets/sfic35.jpg' }, 
   { id: 'ad-astra', name: 'Ad Astra', image: '/assets/sfic42.jpg' },
   { id: 'the-expanse', name: 'The Expanse', image: '/assets/sfic50.jpg' },
-  { id: 'arrival-space', name: 'Arrival', image: '/assets/sfic57.jpg' }, // Renamed to avoid ID collision
-  { id: 'district-9-space', name: 'District 9', image: '/assets/sfic63.jpg' }, // Renamed to avoid ID collision
-  { id: 'edge-of-tomorrow-space', name: 'Edge of Tomorrow', image: '/assets/sfic68.jpg' }, // Renamed to avoid ID collision
+  { id: 'arrival-space', name: 'Arrival', image: '/assets/sfic57.jpg' }, 
+  { id: 'district-9-space', name: 'District 9', image: '/assets/sfic63.jpg' },
+  { id: 'edge-of-tomorrow-space', name: 'Edge of Tomorrow', image: '/assets/sfic68.jpg' },
 ];
 
 const Space = () => {
   const navigate = useNavigate();
 
-  // Function to handle image click and navigate to YOUR internal video page
+ 
   const handleImageClick = (movieId) => {
-    // Navigate to '/video' and pass the movieId in the 'state' object
+   
     navigate('/video', { state: { movieId: movieId } });
   };
 
@@ -45,12 +43,12 @@ const Space = () => {
       <div className="space-grid">
         {spaceTitles.map((item) => (
           <div
-            key={item.id} // **KEY CHANGE**: Use item.id as the key for better React performance and stability
+            key={item.id} 
             className="space-card"
-            onClick={() => handleImageClick(item.id)} // **KEY CHANGE**: Call handleImageClick with item.id
+            onClick={() => handleImageClick(item.id)}
             tabIndex={0}
             role="button"
-            aria-label={`Watch ${item.name} video`} // Updated aria-label for clarity
+            aria-label={`Watch ${item.name} video`} 
           >
             <img src={item.image} alt={item.name} className="space-image" />
             <div className="space-overlay">

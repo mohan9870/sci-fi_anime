@@ -1,11 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Futuristic.scss'; // Assuming your SCSS file is here
+import './Futuristic.scss'; 
 
 const futuristicTitles = [
-  // IMPORTANT: Added unique 'id' for each movie.
-  // These 'id's should ideally match the keys in your `allVideoSources` object
-  // within your VideoPlayer.js component.
+  
   { id: 'her', name: 'Her', image: '/assets/sfic25.jpg' },
   { id: 'the-congress', name: 'The Congress', image: '/assets/sfic26.jpg' },
   { id: 'moon', name: 'Moon', image: '/assets/sfic27.jpg' },
@@ -19,9 +17,9 @@ const futuristicTitles = [
 const Futuristic = () => {
   const navigate = useNavigate();
 
-  // Function to handle image click and navigate to YOUR internal video page
+  
   const handleImageClick = (movieId) => {
-    // Navigate to '/video' and pass the movieId in the 'state' object
+   
     navigate('/video', { state: { movieId: movieId } });
   };
 
@@ -43,14 +41,14 @@ const Futuristic = () => {
       <h1 className="futuristic-title">🔮 Futuristic Predictions</h1>
 
       <div className="futuristic-grid">
-        {futuristicTitles.map((item) => ( // Removed 'index' if not explicitly used, using item.id for key
+        {futuristicTitles.map((item) => ( 
           <div
-            key={item.id} // Use item.id as the key for better React performance and stability
+            key={item.id} 
             className="futuristic-card"
-            onClick={() => handleImageClick(item.id)} // <--- KEY CHANGE: Call handleImageClick with item.id
+            onClick={() => handleImageClick(item.id)} 
             tabIndex={0}
             role="button"
-            aria-label={`Watch ${item.name} video`} // Updated aria-label
+            aria-label={`Watch ${item.name} video`} 
           >
             <img src={item.image} alt={item.name} className="futuristic-image" />
             <div className="futuristic-overlay">

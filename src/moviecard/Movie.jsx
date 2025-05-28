@@ -15,7 +15,7 @@ const Movie = () => {
     const isInList = myList.some(listItem => listItem.id === item.id);
     if (!isInList) {
       addToList(item);
-      // You can add a simple alert if you want feedback:
+     
       alert(`${item.title} added to My List!`);
     } else {
       alert(`${item.title} is already in your list!`);

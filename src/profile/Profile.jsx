@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { FaUser, FaEdit, FaSignOutAlt, FaTimes, FaArrowLeft } from "react-icons/fa"; // Import FaArrowLeft
+import { FaUser, FaEdit, FaSignOutAlt, FaTimes, FaArrowLeft } from "react-icons/fa"; 
 import { MdSubscriptions } from "react-icons/md";
 import { BiHistory } from "react-icons/bi";
 import { FaDownload, FaPlus } from "react-icons/fa6";
 import { FiSettings } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom"; 
 import "./Profile.scss";
 
 const PROFILE_COLORS = ["#3498db", "#2ecc71", "#9b59b6", "#e67e22", "#e74c3c"];
@@ -93,8 +93,7 @@ const Profile = () => {
     isEditing: false,
     profile: null,
   });
-  const navigate = useNavigate(); // Initialize useNavigate
-
+  const navigate = useNavigate(); 
   useEffect(() => {
     try {
       const email = localStorage.getItem("userEmail");
@@ -170,7 +169,7 @@ const Profile = () => {
   return (
     <div className="profile-page">
       <header className="profile-header">
-        {/* Back Arrow Button */}
+       
         <button className="back-button" onClick={() => navigate('/home')}>
           <FaArrowLeft />
         </button>

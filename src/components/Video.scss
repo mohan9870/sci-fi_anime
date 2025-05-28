@@ -1,71 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap');
-/* You can add more sci-fi fonts here: 'Major Mono Display', 'Chakra Petch', 'Michroma', 'Nova Mono' */
 
 :root {
-    /* Define Neon Color Palette - central place for colors */
-    --neon-cyan: #0ff; /* Bright Cyan */
-    --neon-magenta: #f0f; /* Bright Magenta */
-    --neon-purple: #a0f; /* Bright Purple */
-    --neon-green: #0f0; /* Bright Green */
-    --dark-bg: #0a0a0d; /* Very dark blue-gray for backgrounds */
-    --panel-bg-opacity: 0.2; /* Transparency for hologram-like panels */
-    --border-opacity: 0.4; /* Transparency for panel borders */
-    --glow-strength: 0 0 10px; /* Default shadow for glowing elements */
+  --neon-cyan: #0ff;
+  --neon-magenta: #f0f;
+  --neon-purple: #a0f;
+  --neon-green: #0f0;
+  --dark-bg: #0a0a0d;
+  --panel-bg-opacity: 0.2;
+  --border-opacity: 0.4;
+  --glow-strength: 0 0 10px;
 }
 
-/* Global body styling for the player environment */
 body {
-    margin: 0;
-    overflow: hidden; /* Hides scrollbars, crucial for full-screen effects */
-    font-family: 'Share Tech Mono', monospace; /* Default monospace font */
-    background-color: var(--dark-bg);
-    color: var(--neon-cyan); /* Default text color with a neon glow */
-    text-shadow: var(--glow-strength) var(--neon-cyan);
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+  background-color: var(--dark-bg);
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-strength) var(--neon-cyan);
 }
 
-/* Main container for the Sci-Fi player */
 .sci-fi-player-container {
-    position: relative;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--dark-bg);
-    overflow: hidden; /* Ensures all effects are contained within */
+  position: relative;
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-bg);
+  overflow: hidden;
 }
 
-/* Global Glitch Text Effect - apply this class to any text for the effect */
 .glitched-text {
-    animation: textGlitch 0.5s infinite alternate;
+  animation: textGlitch 0.5s infinite alternate;
 }
 
 @keyframes textGlitch {
-    0% { transform: skewX(0deg); text-shadow: var(--glow-strength) var(--neon-cyan); }
-    25% { transform: skewX(2deg); color: var(--neon-magenta); text-shadow: var(--glow-strength) var(--neon-magenta); }
-    50% { transform: skewX(-3deg); color: var(--neon-purple); text-shadow: var(--glow-strength) var(--neon-purple); }
-    75% { transform: skewX(1deg); color: var(--neon-green); text-shadow: var(--glow-strength) var(--neon-green); }
-    100% { transform: skewX(0deg); color: var(--neon-cyan); text-shadow: var(--glow-strength) var(--neon-cyan); }
+  0% { transform: skewX(0deg); text-shadow: var(--glow-strength) var(--neon-cyan); }
+  25% { transform: skewX(2deg); color: var(--neon-magenta); text-shadow: var(--glow-strength) var(--neon-magenta); }
+  50% { transform: skewX(-3deg); color: var(--neon-purple); text-shadow: var(--glow-strength) var(--neon-purple); }
+  75% { transform: skewX(1deg); color: var(--neon-green); text-shadow: var(--glow-strength) var(--neon-green); }
+  100% { transform: skewX(0deg); color: var(--neon-cyan); text-shadow: var(--glow-strength) var(--neon-cyan); }
 }
 
-/* Example back button styling (uncomment in Video.jsx if used) */
 .back-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: linear-gradient(45deg, #333, #555);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 10px 15px;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.9em;
-    z-index: 100; /* Ensure it's on top of everything */
-    transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(45deg, #333, #555);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9em;
+  z-index: 100;
+  transition: all 0.2s ease-in-out;
 }
 
 .back-button:hover {
-    background: linear-gradient(45deg, #555, #777);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  background: linear-gradient(45deg, #555, #777);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }

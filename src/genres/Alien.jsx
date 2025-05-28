@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Alien.scss'; // Assuming your SCSS file is here
+import './Alien.scss'; 
 
 const alienTitles = [
   { id: 'arrival', name: 'Arrival', image: '/assets/sfic9.jpg' },
@@ -16,10 +16,10 @@ const alienTitles = [
 const Alien = () => {
   const navigate = useNavigate();
 
-  // Function to handle image click and navigate to YOUR internal video page
+ 
   const handleImageClick = (movieId) => {
-    // Navigate to '/video' and pass the movieId in the 'state' object
-    navigate('/video', { state: { movieId: movieId } }); // <--- KEY CHANGE HERE
+  
+    navigate('/video', { state: { movieId: movieId } }); 
   };
 
   return (

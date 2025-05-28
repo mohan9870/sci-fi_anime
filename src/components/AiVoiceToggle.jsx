@@ -9,14 +9,14 @@ const AiVoiceToggle = ({ aiVoiceEnabled, onToggleAiVoice }) => {
 
     useEffect(() => {
         if (aiVoiceEnabled) {
-            // Wait 5 seconds before playing
+            
             timeoutRef.current = setTimeout(() => {
-                audioRef.current = new Audio('/audio/ai-voice.mp3'); // Replace with your actual path
+                audioRef.current = new Audio('/audio/ai-voice.mp3'); 
                 audioRef.current.play();
                 setIsPlaying(true);
-            }, 5000); // Change to 10000 for 10 seconds
+            }, 5000); 
         } else {
-            // If toggled off, stop audio or cancel delay
+           
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current);
             }

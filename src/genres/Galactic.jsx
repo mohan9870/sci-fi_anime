@@ -1,11 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Galactic.scss'; // Assuming your SCSS file is here
+import './Galactic.scss'; 
 
 const galacticTitles = [
-  // IMPORTANT: Added unique 'id' for each movie.
-  // These 'id's should match the keys in your `allVideoSources` object
-  // within your VideoPlayer.js component.
+  
   { id: 'dune', name: 'Dune', image: '/assets/sfic33.jpg' },
   { id: 'star-wars', name: 'Star Wars', image: '/assets/sfic34.jpg' },
   { id: 'guardians-of-the-galaxy', name: 'Guardians of the Galaxy', image: '/assets/sfic35.jpg' },
@@ -19,9 +17,9 @@ const galacticTitles = [
 const Galactic = () => {
   const navigate = useNavigate();
 
-  // Function to handle image click and navigate to YOUR internal video page
+ 
   const handleImageClick = (movieId) => {
-    // Navigate to '/video' and pass the movieId in the 'state' object
+    
     navigate('/video', { state: { movieId: movieId } });
   };
 
@@ -47,12 +45,12 @@ const Galactic = () => {
       <div className="galactic-grid">
         {galacticTitles.map((item) => (
           <div
-            key={item.id} // Using item.id as the key for better React performance
+            key={item.id} 
             className="galactic-card"
-            onClick={() => handleImageClick(item.id)} // <--- KEY CHANGE: Call handleImageClick with item.id
+            onClick={() => handleImageClick(item.id)}
             tabIndex={0}
             role="button"
-            aria-label={`Watch ${item.name} video`} // Updated aria-label
+            aria-label={`Watch ${item.name} video`}
           >
             <img src={item.image} alt={item.name} className="galactic-image" />
             <div className="galactic-overlay">

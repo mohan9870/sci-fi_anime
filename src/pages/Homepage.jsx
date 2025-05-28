@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 import './Home.scss';
 
-// --- Data for the main hero slider ---
+
 const images = [
   {
     src: '/assets/homeanime1img.jpg',
     title: 'Akira',
     description: 'Akira is a cyberpunk action film and is the best-known work of director Katsuhiro Otomo.',
-    // Corrected video path: It should typically be relative to the 'public' folder
+   
     video: '/videos/GhostInTheShell-1080p.mp4',
   },
   {
@@ -27,7 +27,7 @@ const images = [
   },
 ];
 
-// --- Your existing data for content rows (exported for use in other pages) ---
+
 export const seriessections = [
   {
     heading: 'Series',
@@ -136,7 +136,7 @@ function Homepage() {
   }, [selectedVideo, currentIndex]);
 
   const handleWatchNow = (item) => {
-    // Navigate to a dedicated video playback page
+   
     navigate('/video', { state: { videoUrl: item.video, title: item.title } });
   };
 
@@ -144,14 +144,13 @@ function Homepage() {
     setSelectedVideo(null);
   };
 
-  // Modified handleItemClick to navigate to a video page
+  
   const handleItemClick = (item) => {
     if (item.video) {
       navigate('/video', { state: { videoUrl: item.video, title: item.title } });
     } else {
       console.warn(`No video found for: ${item.title}`);
-      // Optionally, navigate to a details page or show a message
-      // navigate(`/details/${item.id}`);
+    
     }
   };
 
@@ -165,7 +164,7 @@ function Homepage() {
 
   return (
     <div className="homepage">
-      {/* --- Main Hero Slider Section --- */}
+     
       <section className="hero-slider-section">
         {!selectedVideo ? (
           <div className="slider-content">
@@ -188,8 +187,7 @@ function Homepage() {
             </div>
           </div>
         ) : (
-          // This block is no longer strictly needed if you're navigating to a separate video page
-          // but kept here for demonstration of closing an embedded video if that's still desired.
+         
           <div className="video-player-container">
             <button className="close-video-btn" onClick={closeVideo}>
               <FaTimes /> Close
@@ -202,9 +200,7 @@ function Homepage() {
         )}
       </section>
 
-      {/* --- Content Row Sections --- */}
-
-      {/* Series Section */}
+     
       {seriessections.map(({ heading, items }) => (
         <section key={heading} className="content-row-section">
           <div className="section-header">
@@ -224,7 +220,7 @@ function Homepage() {
         </section>
       ))}
 
-      {/* Latest Releases Section */}
+     
       {latestReleasesSections.map(({ heading, items }) => (
         <section key={heading} className="content-row-section">
           <div className="section-header">
@@ -244,7 +240,7 @@ function Homepage() {
         </section>
       ))}
 
-      {/* Top Movies Section */}
+     
       <section className="content-row-section">
         <div className="section-header">
           <h2>Top Movies</h2>

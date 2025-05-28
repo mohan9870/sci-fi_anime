@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa"; // Import FaArrowLeft
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 const leaderboardData = [
   { rank: 1, name: "StarNeko", score: 9850, role: "Binge-Watcher" },
@@ -79,42 +79,40 @@ export default function SciFiLeaderboardNeuralHubs() {
         </section>
       </div>
 
-      {/* Left Arrow Button positioned at the top left */}
       <button
         style={{
           position: 'fixed',
           top: '20px',
-          left: '20px', // Position on the left
+          left: '20px',
           marginTop:'47px',
           backgroundColor: 'transparent',
           border: 'none',
-          color: '#00f0ff', // A sci-fi blue/cyan color
+          color: '#00f0ff',
           cursor: 'pointer',
           fontSize: '2em',
           zIndex: 1000,
         }}
-        onClick={() => navigate('/timeline')} // Navigate to /timeline
+        onClick={() => navigate('/timeline')}
         aria-label="Go to Timeline page"
       >
         <FaArrowLeft />
       </button>
 
-      {/* Right Arrow Button positioned at the top right */}
       <button
         style={{
-          position: 'fixed', // Use fixed to keep it in view regardless of scroll
-          top: '20px',       // 20px from the top
-          right: '20px',     // 20px from the right
-            marginTop:'47px',
-          backgroundColor: 'transparent', // No background color
-          border: 'none',    // No border
-          color: '#00f0ff',  // Consistent sci-fi blue/cyan
-          cursor: 'pointer', // Show pointer on hover
-          fontSize: '2em',   // Adjust icon size
-          zIndex: 1000,      // Ensure it's above other content
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          marginTop:'47px',
+          backgroundColor: 'transparent',
+          border: 'none',
+          color: '#00f0ff',
+          cursor: 'pointer',
+          fontSize: '2em',
+          zIndex: 1000,
         }}
-        onClick={() => navigate('/video')} // Corrected this to '/video' as per the previous logic
-        aria-label="Go to Video page" // Updated aria-label
+        onClick={() => navigate('/video')}
+        aria-label="Go to Video page"
       >
         <FaArrowRight />
       </button>
@@ -135,7 +133,6 @@ export default function SciFiLeaderboardNeuralHubs() {
           min-height: 100vh;
         }
 
-        /* ===== Holographic Leaderboard ===== */
         .leaderboard {
           max-width: 700px;
           margin: 0 auto 3rem auto;
@@ -233,7 +230,6 @@ export default function SciFiLeaderboardNeuralHubs() {
           font-family: "Orbitron", monospace;
         }
 
-        /* ===== Neural Network Fandom Hubs ===== */
         .neural-hubs {
           max-width: 960px;
           margin: 0 auto;
@@ -329,7 +325,6 @@ export default function SciFiLeaderboardNeuralHubs() {
           user-select: none;
         }
 
-        /* Background images for fandom themes */
         .theme-chrono-core {
           background-image: url('/assets/mecha-lab-bg.jpg');
           background-size: cover;

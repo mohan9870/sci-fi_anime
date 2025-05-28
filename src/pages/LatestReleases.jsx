@@ -1,11 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import './LatestReleases.scss';
 
 const LatestReleases = ({ sections }) => {
-  const navigate = useNavigate(); // Initialize useNavigate
-
-  // If no sections passed, use default data internally
+  const navigate = useNavigate();
   const latestSections = sections && Array.isArray(sections)
     ? sections
     : [
@@ -42,16 +40,16 @@ const LatestReleases = ({ sections }) => {
 
   return (
     <div className="latest-releases-container">
-      <header className="latest-releases-header"> {/* Added a header for better structure */}
+      <header className="latest-releases-header"> 
         <button onClick={() => navigate('/home')} className="back-button">
-          &larr; {/* Back arrow */}
+          &larr;
         </button>
-        {/* Moved the heading inside the new header */}
+       
         <h2 className="section-heading">{latestSections[0]?.heading || 'Latest Releases'}</h2>
       </header>
       {latestSections.map((section) => (
         <section key={section.heading} className="latest-releases-section">
-          {/* The h2 element that was here is now moved into the header */}
+          
           <div className="latest-releases-grid">
             {section.items?.map((item) => (
               <div key={item.id} className="latest-release-card">

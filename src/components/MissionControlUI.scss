@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap');
 
-// Define Futuristic Color Palette
+
 $dark-bg: #0a0a0a;
 $neon-cyan: #00ffff;
 $neon-magenta: #ff00ff;
 $neon-purple: #8a2be2;
 $neon-green: #00ff00;
-$text-light: #e0ffe0; // Lighter green for general text
-$border-glow: rgba(0, 255, 255, 0.4); // Cyan glow for panels
+$text-light: #e0ffe0; 
+$border-glow: rgba(0, 255, 255, 0.4);
 
-// Keyframe Animations
+
 @keyframes glitch {
   0% { text-shadow: 0.05em 0 0 $neon-cyan, -0.03em -0.02em 0 $neon-magenta; }
   10% { text-shadow: -0.05em -0.02em 0 $neon-magenta, 0.03em 0.02em 0 $neon-cyan; }
@@ -50,13 +50,13 @@ $border-glow: rgba(0, 255, 255, 0.4); // Cyan glow for panels
   100% { background-position: 0% 100%; }
 }
 
-// Global Styles
+
 body {
   margin: 0;
   font-family: 'Share Tech Mono', monospace;
   background-color: $dark-bg;
   color: $text-light;
-  overflow-x: hidden; // Prevent horizontal scroll
+  overflow-x: hidden; 
 }
 
 .mission-control-container {
@@ -66,7 +66,7 @@ body {
   padding: 30px;
   min-height: 100vh;
   position: relative;
-  overflow: hidden; // Ensure background overlay doesn't cause scroll
+  overflow: hidden; 
 }
 
 .background-overlay {
@@ -76,14 +76,14 @@ body {
   width: 100%;
   height: 100%;
   background:
-    // Subtle starscape/neural grid pattern
+   
     radial-gradient(circle at top left, rgba(0, 255, 255, 0.05) 0%, transparent 30%),
     radial-gradient(circle at bottom right, rgba(255, 0, 255, 0.05) 0%, transparent 30%),
     linear-gradient(to right, rgba(0, 255, 0, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 255, 0, 0.02) 1px, transparent 1px);
-  background-size: 50px 50px; // Size of the grid cells
+  background-size: 50px 50px; 
   animation: backgroundGridFlow 120s linear infinite;
-  z-index: -1; // Keep it behind everything
+  z-index: -1; 
   opacity: 0.7;
 }
 
@@ -123,16 +123,16 @@ body {
 }
 
 .hologram-panel {
-  background: rgba(10, 20, 30, 0.7); // Darker, semi-transparent background
+  background: rgba(10, 20, 30, 0.7);
   border: 1px solid $neon-cyan;
   border-image: linear-gradient(45deg, $neon-cyan, $neon-magenta, $neon-purple, $neon-green) 1;
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 0 20px $border-glow, inset 0 0 10px $border-glow;
-  backdrop-filter: blur(8px); // Stronger blur for hologram effect
-  animation: flicker 2s infinite alternate; // Subtle flicker
+  backdrop-filter: blur(8px); 
+  animation: flicker 2s infinite alternate;
   position: relative;
-  overflow: hidden; // For scanline effect
+  overflow: hidden; 
   &::before {
     content: '';
     position: absolute;
@@ -149,7 +149,7 @@ body {
     background-size: 100% 10px;
     animation: scanline 10s linear infinite;
     opacity: 0.5;
-    pointer-events: none; // Allow clicks to pass through
+    pointer-events: none; 
   }
 }
 
@@ -260,11 +260,11 @@ body {
   height: 180px;
   background: rgba(10, 20, 30, 0.6);
   border: 2px solid $neon-cyan;
-  border-radius: 50%; // Circular nodes
+  border-radius: 50%;
   box-shadow: 0 0 10px $neon-cyan, 0 0 20px rgba(0, 255, 255, 0.4);
   transition: all 0.3s ease-in-out;
   position: relative;
-  overflow: hidden; // For light trail
+  overflow: hidden; 
 
   &:hover {
     transform: scale(1.08);
@@ -288,7 +288,7 @@ body {
     .node-icon { background-color: rgba(255, 0, 0, 0.6); }
     .node-title, .tag { color: rgba(255, 255, 255, 0.5); }
     &:hover {
-      transform: none; // No scale on hover for locked
+      transform: none; 
       box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
     }
   }
@@ -353,7 +353,7 @@ body {
   &.mission .node-icon { background-color: $neon-magenta; border-color: rgba($neon-magenta, 0.7); }
   &.recon .node-icon { background-color: $neon-purple; border-color: rgba($neon-purple, 0.7); }
 
-  // Tag-specific styling for critical missions
+ 
   &.tag-temporal-anomaly {
     border-color: $neon-green;
     box-shadow: 0 0 10px $neon-green, 0 0 20px rgba(0, 255, 0, 0.5);
@@ -364,7 +364,7 @@ body {
     }
   }
   &.tag-system-breach {
-    border-color: #ff3333; // Red for breach
+    border-color: #ff3333; 
     box-shadow: 0 0 10px #ff3333, 0 0 20px rgba(255, 51, 51, 0.6);
     .node-icon {
       background-color: #ff3333;
@@ -396,7 +396,7 @@ body {
   width: 90%;
   max-width: 800px;
   text-align: center;
-  min-height: 250px; /* Added for visibility of select message */
+  min-height: 250px; 
 
   .detail-title {
     font-size: 2.2em;
@@ -486,7 +486,7 @@ body {
   }
 }
 
-// Responsive Adjustments
+
 @media (max-width: 768px) {
   .main-title {
     font-size: 2.5em;
@@ -507,7 +507,7 @@ body {
   }
 
   .dashboard-grid {
-    grid-template-columns: 1fr; // Stack items on small screens
+    grid-template-columns: 1fr; 
   }
 }
 

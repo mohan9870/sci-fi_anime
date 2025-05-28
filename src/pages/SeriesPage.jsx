@@ -1,9 +1,7 @@
-// src/pages/SeriesPage.jsx
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SeriesPage.scss'; // You'll create this SCSS file
-
-// Re-import the series data (or pass it via context/props if preferred)
+import './SeriesPage.scss'; 
 const seriessections = [
   {
     heading: 'Series',
@@ -39,7 +37,7 @@ const seriessections = [
 const SeriesPage = () => {
   const navigate = useNavigate();
 
-  // Assuming seriessections only has one entry for 'Series'
+
   const allSeriesItems = seriessections[0] ? seriessections[0].items : [];
 
   return (
@@ -55,7 +53,7 @@ const SeriesPage = () => {
           <div key={item.id} className="series-card">
             <img src={item.img} alt={item.title} className="series-card-img" />
             <div className="series-card-title">{item.title}</div>
-            {/* You can add watch/details buttons here */}
+          
           </div>
         ))}
       </div>

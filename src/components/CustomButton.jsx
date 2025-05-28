@@ -1,9 +1,9 @@
 import React from 'react';
 
 function CustomButton({ label, type = 'button', color = 'primary', onClick }) {
-  // Neon color palette based on your SOP
+  
   const colors = {
-    primary: '#00d4ff',  // Cyan neon
+    primary: '#00d4ff', 
     magenta: '#ff00ff',
     purple: '#9b59b6',
     green: '#00ff99',
@@ -23,9 +23,9 @@ function CustomButton({ label, type = 'button', color = 'primary', onClick }) {
         borderRadius: '12px',
         color: '#000',
         fontWeight: '900',
-        fontFamily: "'Orbitron', sans-serif",  // Futuristic font, load Orbitron via Google Fonts
+        fontFamily: "'Orbitron', sans-serif", 
         cursor: 'pointer',
-        boxShadow: `0 0 8px 2px ${bgColor}`, // Neon glow effect
+        boxShadow: `0 0 8px 2px ${bgColor}`, 
         transition: 'transform 0.15s ease, box-shadow 0.3s ease',
       }}
       onMouseEnter={e => {

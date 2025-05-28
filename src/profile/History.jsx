@@ -42,7 +42,7 @@ const History = () => {
   const modalRef = useRef();
   const navigate = useNavigate();
 
-  // Close menus when clicking outside
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -56,7 +56,7 @@ const History = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Close with ESC key
+  
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") {

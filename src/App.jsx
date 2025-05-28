@@ -1,9 +1,11 @@
+
+
+
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Import Page Components
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
@@ -18,21 +20,18 @@ import Download from './profile/Download';
 import AccountSetting from './profile/Accountsetting';
 import Presentplan from './pages/Presentplan';
 import Payment from './pages/Payment';
-import Homepage from './pages/Homepage'; // Your main home page
-import LatestReleases from './pages/LatestReleases'; // The full Latest Releases page
-import TopMovies from './pages/Topmovies'; // The full Top Movies page (assuming you created this)
-import SeriesPage from './pages/SeriesPage'; // The full Series Page
-
-// Import UI Components
+import Homepage from './pages/Homepage'; 
+import LatestReleases from './pages/LatestReleases'; 
+import TopMovies from './pages/Topmovies'; 
+import SeriesPage from './pages/SeriesPage'; 
 import NavBar from './components/NavBar';
-import Footer from './components/Footer'; // Import the new Footer component
+import Footer from './components/Footer'; 
 import NeuralHubs from './components/neuralhubs/NeuralHubs';
 import TimelineVisualization from './components/TimelineVisualization';
 import MissionControlUI from './components/MissionControlUI';
 import Video from './components/Video';
 import DataScanOverlay from './components/DataScanOverlay';
 
-// Import Context Providers
 import { MyListProvider } from './context/MyListContext';
 import Genres from './genres/Genres';
 import SpaceWestern from './genres/Spacewestern';
@@ -49,12 +48,12 @@ import Tech from './genres/Tech';
 import Time from './genres/Time';
 
 
-// Main App component
+
 function App() {
   return (
-    // <Router> is assumed to be in index.js, as per your comment.
+   
     <MyListProvider>
-      <AppContent /> {/* Render a child component that uses useLocation */}
+      <AppContent />
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -69,50 +68,47 @@ function App() {
   );
 }
 
-// New component to handle conditional rendering of NavBar and Footer
 function AppContent() {
   const location = useLocation();
   const { pathname } = location;
 
-  // Define routes where NavBar and Footer should NOT be shown
+ 
   const routesWithoutNavAndFooter = [
-    '/',                  // Login page
+    '/',             
     '/signup',
     '/forgot-password',
     '/otp-verification',
     '/reset-password',
-    '/presentplan',       // Added
-    '/payment',           // Added
+    '/presentplan',     
+    '/payment',          
     '/accountsetting',
-    // Removed '/series', '/latest', '/topmovies' from this array
+   
   ];
 
   const shouldShowNavAndFooter = !routesWithoutNavAndFooter.includes(pathname);
 
   return (
     <>
-      {shouldShowNavAndFooter && <NavBar />} {/* Conditionally render NavBar */}
+      {shouldShowNavAndFooter && <NavBar />} {}
 
-      <main> {/* Semantic tag for main content */}
+      <main> {}
         <Routes>
-          {/* Authentication Routes */}
-          <Route path="/" element={<Login />} /> {/* Default route, often login/landing */}
+       
+          <Route path="/" element={<Login />} /> 
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/otp-verification" element={<OtpVerification />} />
           <Route path="/reset-password" element={<ResetPassword />} />
 
-          {/* Main Application Routes */}
-          <Route path="/home" element={<Homepage />} /> {/* Your main home page */}
+         
+          <Route path="/home" element={<Homepage />} /> 
           <Route path="/mylist" element={<MyList />} />
-          <Route path="/movie" element={<Movie />} /> {/* Example movie detail page */}
-          <Route path="/latest" element={<LatestReleases />} /> {/* Dedicated Latest Releases page */}
-          <Route path="/topmovies" element={<TopMovies />} /> {/* Dedicated Top Movies page */}
-          <Route path="/series" element={<SeriesPage />} /> {/* Dedicated Series Page */}
-           <Route path="/genres" element={<Genres />} /> {/* Dedicated Series Page */}
+          <Route path="/movie" element={<Movie />} /> 
+          <Route path="/latest" element={<LatestReleases />} />
+          <Route path="/topmovies" element={<TopMovies />} />
+          <Route path="/series" element={<SeriesPage />} /> 
+           <Route path="/genres" element={<Genres />} /> 
 
-
-          {/* Profile & Account Routes */}
           <Route path="/profile" element={<Profile />} />
           <Route path="/subscriptionplans" element={<SubscriptionPlans />} />
           <Route path="/payment" element={<Payment />} />
@@ -122,7 +118,7 @@ function AppContent() {
           <Route path="/presentplan" element={<Presentplan />} />
 
 
-          {/* Other Specific Components/Pages */}
+          
           <Route path="/neural" element={<NeuralHubs />} />
           <Route path="/timeline" element={<TimelineVisualization />} />
           <Route path="/mission" element={<MissionControlUI />} />
@@ -140,12 +136,12 @@ function AppContent() {
            <Route path="/spa" element={<Space/>} />
            <Route path="/tech" element={<Tech/>} />
            <Route path="/time" element={<Time/>} />
-          
+           
 
         </Routes>
       </main>
 
-      {shouldShowNavAndFooter && <Footer />} {/* Conditionally render Footer */}
+      {shouldShowNavAndFooter && <Footer />} {}
     </>
   );
 }

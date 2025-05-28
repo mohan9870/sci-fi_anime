@@ -8,6 +8,11 @@ import VideoPlayer from './VideoPlayer';
 import BackgroundVisuals from './BackgroundVisuals';
 import './Video.scss';
 
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPlay, faPause, faForward, faUndo, faEye, faClosedCaptioning, faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+library.add(faPlay, faPause, faForward, faUndo, faEye, faClosedCaptioning, faCaretUp, faCaretDown);
+
 function Video({ navigateTo }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -18,14 +23,27 @@ function Video({ navigateTo }) {
   const [isDataScanning, setIsDataScanning] = useState(false);
   const [aiVoiceEnabled, setAiVoiceEnabled] = useState(false);
   const [currentEpisodeMetadata, setCurrentEpisodeMetadata] = useState(null);
+  
+  const [currentSubtitleLanguage, setCurrentSubtitleLanguage] = useState('off');
+  const [quality, setQuality] = useState('1080p'); 
 
-  const videoSrc = "/videos/GhostInTheShell-1080p.mp4"; // Put your actual video path here
+  const videoSrc = "/videos/GhostInTheShell-1080p.mp4";
+  const availableSubtitleLanguages = [
+    { code: 'off', label: 'Off' },
+    { code: 'en', label: 'English' },
+    { code: 'es', label: 'Español' },
+    { code: 'fr', label: 'Français' },
+    { code: 'de', label: 'Deutsch' },
+   
+  ];
 
   useEffect(() => {
     const videoElement = videoRef.current;
     if (videoElement) {
+     
       videoElement.addEventListener('timeupdate', handleTimeUpdate);
       videoElement.addEventListener('loadedmetadata', handleLoadedMetadata);
+      
       return () => {
         videoElement.removeEventListener('timeupdate', handleTimeUpdate);
         videoElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
@@ -35,9 +53,10 @@ function Video({ navigateTo }) {
   const onSeek = (time) => {
     if (videoRef.current) {
       videoRef.current.currentTime = time;
-      setCurrentTime(time); // update React state as well
+      setCurrentTime(time); 
     }
   };
+
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -46,9 +65,10 @@ function Video({ navigateTo }) {
       } else {
         videoRef.current.play();
       }
-      setIsPlaying(!isPlaying);
+      setIsPlaying(!isPlaying); 
     }
   };
+
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
@@ -56,9 +76,10 @@ function Video({ navigateTo }) {
     }
   };
 
+  
   const handleLoadedMetadata = () => {
     if (videoRef.current) {
-      setDuration(videoRef.current.duration);
+      setDuration(videoRef.current.duration); 
       setCurrentEpisodeMetadata({
         title: "Episode 1: The First Contact",
         episodeNumber: 1,
@@ -78,34 +99,38 @@ function Video({ navigateTo }) {
     }
   };
 
+  
   const handleQuantumSkip = () => {
     if (videoRef.current) {
-      const skipAmount = 10;
+      const skipAmount = 10; 
       const newTime = Math.min(videoRef.current.currentTime + skipAmount, duration);
       videoRef.current.currentTime = newTime;
-      setIsQuantumSkipping(true);
+      setIsQuantumSkipping(true); 
       setTimeout(() => {
-        setIsQuantumSkipping(false);
+        setIsQuantumSkipping(false); 
       }, 500);
     }
   };
 
+  
   const handleTemporalReplay = () => {
     if (videoRef.current && !isTemporalReplaying) {
       setIsTemporalReplaying(true);
       const originalPlaybackRate = videoRef.current.playbackRate;
-      videoRef.current.playbackRate = 0.5;
+      videoRef.current.playbackRate = 0.5; 
       setTimeout(() => {
-        videoRef.current.playbackRate = originalPlaybackRate;
-        setIsTemporalReplaying(false);
+        videoRef.current.playbackRate = originalPlaybackRate; 
+        setIsTemporalReplaying(false); 
       }, 3000);
     }
   };
 
+ 
   const toggleDataScan = () => {
     setIsDataScanning(!isDataScanning);
   };
 
+ 
   const speakAiVoice = (text) => {
     if ('speechSynthesis' in window && aiVoiceEnabled) {
       const utterance = new SpeechSynthesisUtterance(text);
@@ -117,20 +142,38 @@ function Video({ navigateTo }) {
   useEffect(() => {
     if (isDataScanning && aiVoiceEnabled && currentEpisodeMetadata?.commentary) {
       const activeCommentary = currentEpisodeMetadata.commentary.find(
-        c => currentTime >= c.time && currentTime < c.time + 10
+        c => currentTime >= c.time && currentTime < c.time + 10 
       );
       if (activeCommentary) {
-        speakAiVoice(activeCommentary.text);
+        speakAiVoice(activeCommentary.text); 
       }
     }
   }, [currentTime, isDataScanning, aiVoiceEnabled, currentEpisodeMetadata]);
 
+  const handleQualityChange = (newQuality) => {
+    setQuality(newQuality);
+    
+    console.log(`Video quality changed to: ${newQuality}`);
+  };
+
+  
+  const handleSubtitleLanguageChange = (languageCode) => {
+    setCurrentSubtitleLanguage(languageCode);
+    
+    console.log(`Subtitle language changed to: ${languageCode}`);
+   
+  };
+
+
   return (
     <div className="sci-fi-player-container">
+
       <BackgroundVisuals activeVisual={isDataScanning ? 'neural-grid' : 'starscape'} />
 
+   
       <VideoPlayer videoRef={videoRef} isPlaying={isPlaying} src={videoSrc} />
 
+     
       {isQuantumSkipping && <QuantumSkipFX />}
       {isTemporalReplaying && <TemporalReplayFX />}
 
@@ -144,8 +187,18 @@ function Video({ navigateTo }) {
         onToggleDataScan={toggleDataScan}
         onSeek={onSeek}
         isDataScanning={isDataScanning}
+     
+        subtitlesEnabled={currentSubtitleLanguage !== 'off'} 
+        onSubtitleLanguageChange={handleSubtitleLanguageChange}
+        currentSubtitleLanguage={currentSubtitleLanguage} 
+        availableSubtitleLanguages={availableSubtitleLanguages}
+   
+        quality={quality}
+        onQualityChange={handleQualityChange}
+        qualityOptions={['1080p', '720p', '480p', '360p']} 
       />
 
+    
       {isDataScanning && (
         <DataScanOverlay
           currentTime={currentTime}
@@ -154,6 +207,7 @@ function Video({ navigateTo }) {
         />
       )}
 
+   
       <AiVoiceToggle
         aiVoiceEnabled={aiVoiceEnabled}
         onToggleAiVoice={() => setAiVoiceEnabled(!aiVoiceEnabled)}

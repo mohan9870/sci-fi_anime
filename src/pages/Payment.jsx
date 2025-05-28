@@ -8,7 +8,7 @@ const Payment = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Get the selected plan from location.state
+  
   const initialPlan = location.state?.selectedPlan?.toLowerCase() || "standard";
 
   const plans = [
@@ -95,7 +95,7 @@ const Payment = () => {
       <div className="payment-card futuristic-card">
         <h2 className="payment-title neon-text">Secure Payment</h2>
 
-        {/* Show Selected Plan */}
+  
         <div className="selected-plan">
           <label>Selected Plan</label>
           <div className="plan-info neon-text">
@@ -104,7 +104,7 @@ const Payment = () => {
           </div>
         </div>
 
-        {/* Payment Methods */}
+   
         <h4 className="payment-subtitle">Choose Payment Method</h4>
         <div className="payment-method-group">
           <div
@@ -130,7 +130,7 @@ const Payment = () => {
           </div>
         </div>
 
-        {/* Payment Fields */}
+      
         {paymentMethod === "card" && (
           <div className="payment-details futuristic-input">
             <div className="form-group">

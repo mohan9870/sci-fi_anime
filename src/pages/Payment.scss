@@ -1,7 +1,7 @@
 .present-plan-page {
   min-height: 100vh;
   padding: 40px 20px;
-  // background: linear-gradient(135deg, #0d0f18, #1a1c2b);
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +30,7 @@
   }
 
   .present-plan-card {
-    // background: #121424;
+    
     border-radius: 20px;
     padding: 30px 25px;
     max-width: 400px;
@@ -148,11 +148,11 @@
   }
 }
 
-/* Payment Page Styling */
+
 .payment-page {
   min-height: 100vh;
   padding: 20px 30px;
-  // background: linear-gradient(135deg, #0a0c1e, #1a1a2e);
+  
   font-family: 'Orbitron', 'Open Sans', sans-serif;
   color: #eee;
   display: flex;
@@ -343,5 +343,5 @@
   }
 }
 
-/* Import Google Font Orbitron for that sci-fi vibe */
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');

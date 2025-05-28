@@ -5,12 +5,12 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { BsBookmarkStar } from "react-icons/bs";
 import { RiUser3Line } from "react-icons/ri";
-import { BiCategory } from "react-icons/bi"; // <-- Keep this import
+import { BiCategory } from "react-icons/bi"; 
 
 const menuItems = [
   { name: "Home", route: "/home" },
   { name: "Movies", route: "/movie" },
-  { name: "Genres", route: "/genres" }, // <-- Genres text link remains here
+  { name: "Genres", route: "/genres" }, 
   { name: "Subscription", route: "/subscriptionplans" },
 ];
 
@@ -25,7 +25,7 @@ const Navbar = () => {
     if (path.includes("/profile")) setActiveMenu("Profile");
     else if (path.includes("/mylist")) setActiveMenu("MyList");
     else if (path.includes("/movie")) setActiveMenu("Movies");
-    else if (path.includes("/genres")) setActiveMenu("Genres"); // <-- Still detect genres active
+    else if (path.includes("/genres")) setActiveMenu("Genres"); 
     else if (path.includes("/subscription") || path.includes("/subscriptionplans"))
       setActiveMenu("Subscription");
     else setActiveMenu("Home");
@@ -62,7 +62,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* 🔍 Search bar */}
+        
         <div className="nav-search">
           <input type="text" placeholder="Search..." />
         </div>
@@ -74,7 +74,7 @@ const Navbar = () => {
               title="Profile"
             />
           </Link>
-          {/* genres icon added here, right of profile icon */}
+       
           <Link to="/genres" onClick={() => handleMenuClick("Genres")}>
             <BiCategory
               className={`nav-icon ${activeMenu === "Genres" ? "active" : ""}`}
@@ -116,10 +116,10 @@ const Navbar = () => {
             </ul>
 
             <div className="mobile-menu-icons">
-              {/* Profile, Genres, and MyList icons in order */}
+              
               {[
                 { to: "/profile", icon: RiUser3Line, label: "Profile" },
-                { to: "/genres", icon: BiCategory, label: "Genres" }, // <-- Genres icon added here for mobile
+                { to: "/genres", icon: BiCategory, label: "Genres" },
                 { to: "/mylist", icon: BsBookmarkStar, label: "My List" },
               ].map(({ to, icon: Icon, label }, idx) => (
                 <Link

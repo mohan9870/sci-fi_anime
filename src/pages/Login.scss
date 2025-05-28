@@ -1,19 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-
-/* Base container for the login page */
 .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Ensure it takes full viewport height */
-  background-color: #0a0a0a; /* Fallback background color */
+  min-height: 100vh; 
+  background-color: #0a0a0a; 
   padding: 2rem;
-  box-sizing: border-box; /* Include padding in element's total width/height */
-
-  // Properties for the central login form card
+  box-sizing: border-box;
   max-width: 400px;
-  margin: 60px auto; /* Centered with top/bottom margin */
+  margin: 60px auto; 
   padding: 30px 25px;
   border-radius: 15px;
   box-shadow:
@@ -22,21 +18,15 @@
     0 0 50px #8ff;
   font-family: 'Orbitron', monospace;
   color: #0ff;
-  position: relative; /* Needed for positioning the background pseudo-elements or specific elements */
-
-  /* Starscape background for the container itself */
+  position: relative; 
   background-image: url('https://cdn.pixabay.com/photo/2017/08/30/00/17/space-2695569_1280.jpg');
   background-size: cover;
   background-position: center;
-  /* Applying backdrop-filter directly to the container to blur its background */
-  backdrop-filter: brightness(0.6) blur(5px); /* Added blur to match previous logic */
-  // If you want a more subtle blur on the background image itself,
-  // and not the content, you might need a pseudo-element or separate div for the background.
-  // The current setup blurs the content *over* the background.
-  // If the content is crisp and background blurred, the `backdrop-filter` is correct here.
+  
+  backdrop-filter: brightness(0.6) blur(5px); 
 }
 
-/* Glitch Heading Styling */
+
 .glitch {
   font-size: 3rem;
   font-weight: 900;
@@ -48,7 +38,7 @@
   user-select: none;
 }
 
-/* Glitch effect layers (using provided keyframes) */
+
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
@@ -101,28 +91,28 @@
   }
 }
 
-/* Login Form Styling */
+
 .login-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Input Field Styling */
+
 .input-neon {
   padding: 12px 15px;
   font-size: 1.1rem;
   border-radius: 8px;
   border: 2px solid #0ff;
-  background: transparent; // Ensure transparency to see background if desired
+  background: transparent; 
   color: #0ff;
   box-shadow:
     0 0 8px #0ff,
     inset 0 0 8px #0ff;
   transition: 0.3s ease;
   font-family: 'Orbitron', monospace;
-  width: 100%; // Ensure input takes full width of parent
-  box-sizing: border-box; // Crucial for padding to be included in width
+  width: 100%; 
+  box-sizing: border-box;
 }
 
 .input-neon:focus {
@@ -137,36 +127,35 @@
   color: #66ffffaa;
 }
 
-/* Password Input Wrapper for eye icon positioning */
+
 .password-input-wrapper {
   position: relative;
   width: 100%;
 
   .input-neon {
-    padding-right: 45px; /* Adjust padding to make space for the icon */
-    // This value (45px) should be `icon-size + icon-right-padding`
+    padding-right: 45px;
   }
 }
 
-/* Eye Icon Styling (positioned inside the input) */
+
 .eye-icon {
   position: absolute;
-  right: 15px; /* Distance from the right edge of the input field */
+  right: 15px; 
   top: 50%;
-  transform: translateY(-50%); /* Vertically center the icon */
-  color: #66ffffaa; /* Match placeholder color or desired subtle color */
+  transform: translateY(-50%);
+  color: #66ffffaa; 
   cursor: pointer;
-  font-size: 1.1rem; /* Adjust icon size if needed */
+  font-size: 1.1rem;
   transition: color 0.3s ease, filter 0.3s ease;
-  z-index: 2; /* Ensure the icon is above the input text */
+  z-index: 2; 
 
   &:hover {
-    color: #00ffff; /* Brighter on hover */
+    color: #00ffff; 
     filter: drop-shadow(0 0 5px #00ffff);
   }
 }
 
-/* Forgot Password Link */
+
 .forgot-password-link {
   text-align: center;
   margin: 15px 0 30px;
@@ -188,7 +177,7 @@
   cursor: pointer;
 }
 
-/* Sign In Button */
+
 .btn-neon {
   padding: 12px 15px;
   font-size: 1.2rem;
@@ -216,7 +205,7 @@
     0 0 50px #f0f;
 }
 
-/* "Or sign in with:" text */
+
 .signin-text {
   margin-top: 30px;
   color: #66ffffcc;
@@ -226,7 +215,7 @@
   text-transform: uppercase;
 }
 
-/* Social Icons */
+
 .social-icons {
   display: flex;
   justify-content: center;
@@ -237,12 +226,12 @@
 .social-icon {
   font-size: 2.8rem;
   cursor: pointer;
-  color: #0ff; /* Default neon blue color */
+  color: #0ff; 
   filter: drop-shadow(0 0 6px #0ff);
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Specific colors for social icons */
+
 .social-icon.facebook {
   color: #3b5998;
   filter: drop-shadow(0 0 8px #3b5998);
@@ -269,10 +258,10 @@ input[type="password"]::-ms-clear {
 
 .social-icon:hover {
   transform: scale(1.2);
-  filter: drop-shadow(0 0 14px currentColor); /* Use currentColor for hover effect */
+  filter: drop-shadow(0 0 14px currentColor);
 }
 
-/* Responsive Adjustments */
+
 @media (max-width: 600px) {
   .login-container {
     padding: 1.5rem;
@@ -295,12 +284,12 @@ input[type="password"]::-ms-clear {
 
   .password-input-wrapper {
     .input-neon {
-      padding-right: 40px; /* Adjusted padding for smaller screens */
+      padding-right: 40px; 
     }
   }
 
   .eye-icon {
-    right: 12px; /* Adjusted position for smaller screens */
+    right: 12px; 
     font-size: 1rem;
   }
  
